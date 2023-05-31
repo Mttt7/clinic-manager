@@ -10,6 +10,8 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { DataService } from './data.service';
+import { PatientComponent } from './patients/patient/patient.component';
 
 
 
@@ -26,7 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     SidebarComponent,
     PatientsComponent,
     DoctorsComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
