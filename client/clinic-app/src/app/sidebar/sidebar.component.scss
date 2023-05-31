@@ -1,0 +1,29 @@
+.container {
+    height: 100%;
+    background-color: lightcoral;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+ul {
+    padding: 1rem;
+    padding-left: 0.2rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    color: black;
+}
+
+.active {
+    a {
+        color: black;
+    }
+
+
+}
