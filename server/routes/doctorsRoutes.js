@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.route('/')
     .get(doctorsController.getAllDoctors)
+    .post(doctorsController.addNewDoctor)
 
 
 
