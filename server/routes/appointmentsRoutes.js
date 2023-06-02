@@ -5,7 +5,7 @@ const appointmentsController = require('../controllers/appointmentsController')
 const router = express.Router()
 
 router.route('/')
-
+    .get(appointmentsController.getAllAppointments)
 
 
 

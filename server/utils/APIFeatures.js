@@ -24,7 +24,7 @@ class APIFeatures {
             this.query = this.query.sort(sortBy)
         } else { //default
             this.query = this.query.sort({ surname: 1 })
-            //|| this.query.sort('date')
+            //  || this.query.sort('date') ??
         }
 
         return this

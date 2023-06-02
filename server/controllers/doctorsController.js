@@ -3,29 +3,21 @@ const APIFeatures = require('./../utils/APIFeatures')
 
 exports.getAllDoctors = async (req, res) => {
     try {
-        try {
-            const features = new APIFeatures(Doctor.find(), req.query)
-                .filter()
-                .sort()
-                .limitFields()
-                .paginate()
+        const features = new APIFeatures(Doctor.find(), req.query)
+            .filter()
+            .sort()
+            .limitFields()
+            .paginate()
 
-            const doctors = await features.query
-            //---send response---
-            res.status(200).json({
-                status: 'success',
-                data: {
-                    count: doctors.length,
-                    doctors
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
-
-
-
-
+        const doctors = await features.query
+        //---send response---
+        res.status(200).json({
+            status: 'success',
+            data: {
+                count: doctors.length,
+                doctors
+            }
+        })
     } catch (error) {
         res.status(400).json({
             status: 'fail',
@@ -35,5 +27,7 @@ exports.getAllDoctors = async (req, res) => {
             }
         })
     }
+
+
 
 }
