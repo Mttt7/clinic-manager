@@ -4,8 +4,6 @@ const APIFeatures = require('./../utils/APIFeatures')
 exports.getAllPatients = async (req, res) => {
     try {
         //---execute query---
-        console.log(req.query)
-
         const features = new APIFeatures(Patient.find(), req.query)
             .filter()
             .sort()
