@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 const patientSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -24,28 +25,10 @@ const patientSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: [true, 'Patient must have a address!']
-    },
-    appointments: [
-        {
-            date: {
-                type: Date,
-                required: [true, 'Appointment must have a date!']
-            },
-            doctor: {
-                type: String,
-                required: [true, 'Appointment must have an associated doctor']
-            },
-            specialization: {
-                type: String,
-                required: [true, 'Appointment must have a defined specialization!']
-            }
-        }
-    ]
+        required: [true, 'Patient must have an address!']
+    }
+});
 
+const Patient = mongoose.model('Patient', patientSchema);
 
-})
-
-const Patient = mongoose.model('Patient', patientSchema)
-
-module.exports = Patient
+module.exports = Patient;
