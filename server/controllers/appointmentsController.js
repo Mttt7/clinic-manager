@@ -35,7 +35,7 @@ exports.getAllAppointments = async (req, res) => {
                 patient
             }
         })
-        appointments.sort((a, b) => new Date(a.date) - new Date(b.date))
+        appointments.sort((a, b) => new Date(a.date).getFullYear - new Date(b.date).getFullYear)
 
         //---send response---
         res.status(200).json({
@@ -56,4 +56,91 @@ exports.getAllAppointments = async (req, res) => {
     }
 
 }
+exports.addNewAppointment = async (req, res) => {
+    try {
+        const newAppointment = await Appointment.create(req.body)
+        res.status(200).json({
+            status: 'success',
+            data: {
+                appointment: newAppointment
+            }
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            data: {
+                message: 'fail',
+                details: error
+            }
+        })
+    }
+}
+exports.getAppointment = async (req, res) => {
+    try {
 
+        let appointment = await Appointment.findById(req.params.id) //= Appointment.findOne({ _id: req.params.id})
+
+        const doctorId = appointment.doctor
+        const patientId = appointment.patient
+
+        const doctor = await Doctor.findById(doctorId)
+        const patient = await Patient.findById(patientId)
+
+        appointment = {
+            _id: appointment._id,
+            date: appointment.date,
+            doctor,
+            patient
+
+        }
+
+
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                appointment
+            }
+        })
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: 'No such appointment'
+        })
+    }
+}
+exports.deleteAppointment = async (req, res) => {
+    try {
+        const deleted = await Appointment.findByIdAndDelete(req.params.id)
+        res.status(204).json({
+            status: 'success',
+            data: {
+                appointment: deleted
+            }
+        })
+    } catch (error) {
+        res.status(400).json({
+            satus: "fail",
+            message: error
+        })
+    }
+}
+exports.updateAppointment = async (req, res) => {
+    try {
+        const appointment = await Appointment.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        })
+        res.status(200).json({
+            status: 'success',
+            data: {
+                appointment
+            }
+        })
+    } catch (error) {
+        res.status(400).json({
+            satus: "fail",
+            message: error
+        })
+    }
+}
