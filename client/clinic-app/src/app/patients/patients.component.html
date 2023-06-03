@@ -5,7 +5,7 @@
     </div>
 
     <div class="patients">
-        <app-patient *ngFor="let patient of patients" [patient]="patient"></app-patient>
+        <app-patient *ngFor="let patient of patients, let i =index" [patient]="patient" [index]="i"></app-patient>
 
     </div>
 

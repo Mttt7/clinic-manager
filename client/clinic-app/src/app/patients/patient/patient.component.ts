@@ -9,11 +9,10 @@ import { Patient } from 'src/app/models/patient.model';
 export class PatientComponent {
 
   @Input() patient: Patient
+  @Input() index: number
 
 
-  showPatient() {
 
-  }
 
 
 }

@@ -41,7 +41,7 @@ export class PatientsComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   updateData() {
-    this.dataService.getData(this.pageNumber).subscribe((data) => {
+    this.dataService.getPatients(this.pageNumber).subscribe((data) => {
       this.patients = data.data.patients as Patient[];
       this.patientsFullCount = data.data.fullCount
       this.patientsCount = data.data.count

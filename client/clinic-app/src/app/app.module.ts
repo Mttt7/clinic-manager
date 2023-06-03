@@ -16,6 +16,8 @@ import { PatientComponent } from './patients/patient/patient.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PatientProfileComponent } from './patients/patient-profile/patient-profile.component';
+import { AppointmentComponent } from './appointments/appointment/appointment.component';
+import { AppointmentProfileComponent } from './appointments/appointment-profile/appointment-profile.component';
 
 
 
@@ -31,7 +33,9 @@ import { PatientProfileComponent } from './patients/patient-profile/patient-prof
     DoctorsComponent,
     AppointmentsComponent,
     PatientComponent,
-    PatientProfileComponent
+    PatientProfileComponent,
+    AppointmentComponent,
+    AppointmentProfileComponent
   ],
   imports: [
     BrowserModule,

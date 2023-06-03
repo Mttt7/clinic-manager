@@ -1,4 +1,5 @@
 <div class="container">
+    <div class="id">{{index+1}}</div>
     <div class="full-name">
         <div class="surname">{{patient.surname}}</div>
         <div class="name">{{patient.name}}</div>
@@ -9,7 +10,9 @@
     <div class="pesel">{{patient.pesel}}</div>
 
     <div class="buttons">
-        <div (click)="showPatient()" class="show-patient"><img src="./../../../assets/patient.png" alt=""></div>
+        <a [routerLink]="['/patients',patient._id]">
+            <div class="show-patient"><img src="./../../../assets/patient.png" alt=""></div>
+        </a>
         <div class="appointments"><img src="./../../../assets/appointment.png" alt=""></div>
     </div>
 </div>
