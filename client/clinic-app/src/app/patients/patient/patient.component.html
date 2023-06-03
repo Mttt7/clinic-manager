@@ -1,1 +1,15 @@
-<p>patient works!</p>
+<div class="container">
+    <div class="full-name">
+        <div class="surname">{{patient.surname}}</div>
+        <div class="name">{{patient.name}}</div>
+
+    </div>
+    <div class="city">{{patient.city}}</div>
+    <div class="date-of-birth">{{patient.dateOfBirth | date:'yyyy-MM-dd'}}</div>
+    <div class="pesel">{{patient.pesel}}</div>
+
+    <div class="buttons">
+        <div (click)="showPatient()" class="show-patient"><img src="./../../../assets/patient.png" alt=""></div>
+        <div class="appointments"><img src="./../../../assets/appointment.png" alt=""></div>
+    </div>
+</div>

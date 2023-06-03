@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Patient } from 'src/app/models/patient.model';
 
 @Component({
   selector: 'app-patient',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent {
+
+  @Input() patient: Patient
+
+
+  showPatient() {
+
+  }
+
 
 }

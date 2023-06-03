@@ -1,0 +1,64 @@
+.container {
+    flex: 0 1 800px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    background-color: antiquewhite;
+    padding: .5rem;
+    padding-left: .8rem;
+
+
+
+
+}
+
+.full-name,
+.city,
+.date-of-birth,
+.pesel {
+    width: 9rem; // Możesz dostosować tę wartość według potrzeb
+}
+
+
+
+
+.full-name {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+
+    div {
+        border-radius: 30px;
+        padding: 4px;
+        background-color: rgba(3, 192, 192, 0.644);
+        border: solid 1px rgba(3, 192, 192, 0.644);
+
+        img {
+            width: 28px;
+        }
+    }
+
+    div:hover {
+        transform: scale(1.07);
+        cursor: pointer;
+    }
+}
+
+.name,
+.surname,
+.city,
+.date-of-birth,
+.pesel {
+    display: flex;
+    align-items: center;
+}

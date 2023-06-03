@@ -10,11 +10,12 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { PatientComponent } from './patients/patient/patient.component';
 
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PatientProfileComponent } from './patients/patient-profile/patient-profile.component';
 
 
 
@@ -29,13 +30,16 @@ import { PatientComponent } from './patients/patient/patient.component';
     PatientsComponent,
     DoctorsComponent,
     AppointmentsComponent,
-    PatientComponent
+    PatientComponent,
+    PatientProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

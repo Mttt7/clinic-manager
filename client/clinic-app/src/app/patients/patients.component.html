@@ -1,3 +1,20 @@
 <div class="container">
-    <p>patients works!</p>
+
+    <div *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="patients">
+        <app-patient *ngFor="let patient of patients" [patient]="patient"></app-patient>
+
+    </div>
+
+    <div class="pagination">
+        <div class="info">displaying {{patientsCount}} patients of {{patientsFullCount}}</div>
+        <div class="buttons">
+            <div class="previous" (click)="previousPage()"> <button><- </button> </div>
+            <div class="page">PAGE: {{pageNumber}}</div>
+            <div class="next" (click)="nextPage()"> <button>-></button> </div>
+        </div>
+    </div>
 </div>
