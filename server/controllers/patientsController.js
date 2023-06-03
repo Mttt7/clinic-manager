@@ -12,10 +12,12 @@ exports.getAllPatients = async (req, res) => {
             .paginate()
 
         const patients = await features.query
+        const fullCount = await Patient.countDocuments()
         res.status(200).json({
             status: 'success',
             data: {
                 count: patients.length,
+                fullCount,
                 patients
             }
         })

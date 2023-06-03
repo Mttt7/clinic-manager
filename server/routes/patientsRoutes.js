@@ -8,6 +8,7 @@ router.route('/')
     .get(patientsController.getAllPatients)
     .post(patientsController.addNewPatient)
 
+
 router.route('/:id')
     .get(patientsController.getPatient)
     .delete(patientsController.deletePatient)
