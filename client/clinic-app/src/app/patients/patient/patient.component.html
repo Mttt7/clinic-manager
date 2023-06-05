@@ -1,4 +1,5 @@
 <div class="container">
+
     <div class="id">{{index+1}}</div>
     <div class="full-name">
         <div class="surname">{{patient.surname}}</div>
@@ -11,8 +12,13 @@
 
     <div class="buttons">
         <a [routerLink]="['/patients',patient._id]">
-            <div class="show-patient"><img src="./../../../assets/patient.png" alt=""></div>
+            <div class="show-patient" *ngIf="patient.sex==='M' "><img src="./../../../assets/patient-male.png" alt="">
+            </div>
+            <div class="show-patient" *ngIf="patient.sex==='F' "><img src="./../../../assets/patient-female.png" alt="">
+            </div>
+
         </a>
-        <div class="appointments"><img src="./../../../assets/appointment.png" alt=""></div>
+
+
     </div>
 </div>

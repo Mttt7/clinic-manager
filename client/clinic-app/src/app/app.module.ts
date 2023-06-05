@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
+import { CommonModule } from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +20,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PatientProfileComponent } from './patients/patient-profile/patient-profile.component';
 import { AppointmentComponent } from './appointments/appointment/appointment.component';
 import { AppointmentProfileComponent } from './appointments/appointment-profile/appointment-profile.component';
+import { DoctorProfileComponent } from './doctors/doctor-profile/doctor-profile.component';
+import { DoctorComponent } from './doctors/doctor/doctor.component';
 
 
 
@@ -35,7 +39,9 @@ import { AppointmentProfileComponent } from './appointments/appointment-profile/
     PatientComponent,
     PatientProfileComponent,
     AppointmentComponent,
-    AppointmentProfileComponent
+    AppointmentProfileComponent,
+    DoctorProfileComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,8 @@ import { AppointmentProfileComponent } from './appointments/appointment-profile/
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CommonModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

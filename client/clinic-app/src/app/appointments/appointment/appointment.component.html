@@ -1,3 +1,33 @@
 <div class="container">
+    <div class="specialization">{{appointment?.doctor.specialization}}</div>
 
+
+    <div class="doctor" *ngIf="fromPatient">{{appointment?.doctor.name + ' ' + appointment?.doctor.surname}}</div>
+
+    <div class="patient" *ngIf="fromDoctor">{{appointment?.patient.name + ' ' + appointment?.patient.surname}}</div>
+
+
+
+
+    <div class="date">{{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
+    <div class="links">
+        <a [routerLink]="['/doctors', appointment.doctor._id]" *ngIf="fromPatient">
+            <div class="show-doctor" *ngIf="appointment?.doctor.sex==='M'">
+                <img src="./../../../assets/doctor-male.png">
+            </div>
+            <div class="show-doctor" *ngIf="appointment?.doctor.sex==='F'">
+                <img src="./../../../assets/doctor-female.png">
+            </div>
+        </a>
+        <a [routerLink]="['/doctors', appointment.doctor._id]" *ngIf="fromDoctor">
+            <div class="show-patient" *ngIf="appointment?.patient.sex==='M'">
+                <img src="./../../../assets/patient-male.png">
+            </div>
+            <div class="show-patient" *ngIf="appointment?.patient.sex==='F'">
+                <img src="./../../../assets/patient-female.png">
+            </div>
+        </a>
+
+        <div class="show-appointment"><img src="./../../../assets/calendar.png" alt=""></div>
+    </div>
 </div>

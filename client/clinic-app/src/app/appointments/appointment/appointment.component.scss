@@ -1,0 +1,42 @@
+.container {
+    flex: 0 1 800px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background-color: antiquewhite;
+    padding: .5rem;
+    padding-left: .8rem;
+
+    .links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .6rem;
+
+        >* {
+            border-radius: 30px;
+            padding: 1px;
+            background-color: rgba(3, 192, 192, 0.644);
+            border: solid 1px rgba(3, 192, 192, 0.644);
+            cursor: pointer;
+        }
+
+        >*:hover {
+
+            transform: scale(1.07);
+        }
+    }
+
+    .doctor,
+    .date,
+    .specialization {
+        display: flex;
+        align-items: center;
+    }
+
+
+}
+
+img {
+    width: 28px;
+}

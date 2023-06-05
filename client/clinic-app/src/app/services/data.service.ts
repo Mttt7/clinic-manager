@@ -23,5 +23,10 @@ export class DataService {
     return this.http.get<any>(`http://localhost:7000/api/v1/appointments/${id}`)
   }
 
+  getPatientAppointment(id: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:7000/api/v1/patients/${id}/appointments`)
+  }
+
+
 
 }
