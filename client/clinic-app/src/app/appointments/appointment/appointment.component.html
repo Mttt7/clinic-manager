@@ -11,7 +11,7 @@
 
     <div class="date">{{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
     <div class="links">
-        <a [routerLink]="['/doctors', appointment.doctor._id]" *ngIf="fromPatient">
+        <a [routerLink]="['/doctors', appointment?.doctor._id]" *ngIf="fromPatient">
             <div class="show-doctor" *ngIf="appointment?.doctor.sex==='M'">
                 <img src="./../../../assets/doctor-male.png">
             </div>
@@ -19,7 +19,7 @@
                 <img src="./../../../assets/doctor-female.png">
             </div>
         </a>
-        <a [routerLink]="['/doctors', appointment.doctor._id]" *ngIf="fromDoctor">
+        <a [routerLink]="['/patients', appointment?.patient._id]" *ngIf="fromDoctor">
             <div class="show-patient" *ngIf="appointment?.patient.sex==='M'">
                 <img src="./../../../assets/patient-male.png">
             </div>

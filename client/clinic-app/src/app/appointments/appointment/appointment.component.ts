@@ -9,10 +9,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class AppointmentComponent {
   @Input('appointment') id: string
+  @Input() fromDoctor: boolean
+  @Input() fromPatient: boolean
 
   appointment: Appointment
-  fromDoctor = false
-  fromPatient = true
+
 
 
   constructor(private dataService: DataService) { }

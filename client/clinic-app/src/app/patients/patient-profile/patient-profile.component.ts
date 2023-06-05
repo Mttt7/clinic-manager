@@ -29,7 +29,6 @@ export class PatientProfileComponent implements OnInit {
     })
     this.dataService.getPatientAppointment(this.id).subscribe((data) => {
       this.appointments = data.data.appointments
-      console.log(this.appointments)
     })
 
   }

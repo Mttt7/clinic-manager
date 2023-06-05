@@ -1,1 +1,22 @@
-<p>doctor-profile works!</p>
+<div class="container">
+    <div class="personal-info">
+        <div class="profile-photo">
+            <img src="./../../../assets/doctor-male.png" *ngIf="doctor?.sex==='M'">
+            <img src="./../../../assets/doctor-female.png" *ngIf="doctor?.sex==='F'">
+
+        </div>
+        <div class="full-name">
+            <div class="name">{{doctor?.name}}</div>
+            <div class="surname">{{doctor?.surname}}</div>
+        </div>
+        <div class="birthday">{{doctor?.dateOfBirth}}</div>
+        <div class="specialization">{{doctor?.specialization}}</div>
+    </div>
+
+    <div class="appointments">
+        Appointments:
+        <app-appointment *ngFor="let appointment of appointments" [appointment]="appointment"
+            [fromDoctor]="true"></app-appointment>
+    </div>
+
+</div>
