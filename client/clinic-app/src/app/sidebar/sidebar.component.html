@@ -1,6 +1,7 @@
 <div class="container">
     <ul>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/patients">Patients</a>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/patients']"
+                [queryParams]="{page:1}">Patients</a>
         </li>
         <li routerLinkActive="active"><a [routerLink]="['/doctors']" [queryParams]="{page:1}">Doctors</a></li>
         <li routerLinkActive="active"><a routerLink="/appointments">Appointments</a></li>

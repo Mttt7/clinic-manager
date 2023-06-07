@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { Patient } from '../models/patient.model';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +16,12 @@ export class PatientsComponent implements OnInit {
   patients: Patient[] = []
   patientsCount: number
   patientsFullCount: number
-  pageNumber = 1
+  pageNumber: number = +this.route.snapshot.queryParams['page']
   isLoading = true
+
+  constructor(private dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   nextPage = () => {
     if (this.patientsCount !== 0) {
@@ -38,7 +43,7 @@ export class PatientsComponent implements OnInit {
 
   }
 
-  constructor(private dataService: DataService) { }
+
 
   updateData() {
     this.dataService.getPatients(this.pageNumber).subscribe((data) => {
@@ -48,6 +53,7 @@ export class PatientsComponent implements OnInit {
       // console.log(this.patients);
       // console.log(this.patients[4]._id);
       this.isLoading = false
+      this.router.navigate([], { queryParams: { page: this.pageNumber } })
     })
 
 
