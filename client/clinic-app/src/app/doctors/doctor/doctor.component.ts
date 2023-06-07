@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Doctor } from 'src/app/models/doctor.model';
 
 @Component({
   selector: 'app-doctor',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent {
+  @Input() doctor: Doctor
+  @Input() index: number
+
 
 }

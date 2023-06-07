@@ -1,1 +1,23 @@
-<p>doctor works!</p>
+<div class="container">
+
+    <div class="id">{{index+1}}</div>
+    <div class="full-name">
+        <div class="surname">{{doctor.surname}}</div>
+        <div class="name">{{doctor.name}}</div>
+
+    </div>
+    <div class="date-of-birth">{{doctor.dateOfBirth | date:'yyyy-MM-dd'}}</div>
+    <div class="specialization">{{doctor.specialization}}</div>
+
+    <div class="buttons">
+        <a [routerLink]="['/doctors',doctor._id]">
+            <div class="show-doctor" *ngIf="doctor.sex==='M' "><img src="./../../../assets/doctor-male.png" alt="">
+            </div>
+            <div class="show-doctor" *ngIf="doctor.sex==='F' "><img src="./../../../assets/doctor-female.png" alt="">
+            </div>
+
+        </a>
+
+
+    </div>
+</div>

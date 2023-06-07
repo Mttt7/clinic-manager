@@ -1,1 +1,19 @@
-<p>doctors works!</p>
+<div class="container">
+    <div *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="doctors">
+        <app-doctor *ngFor="let doctor of doctors, let i = index" [doctor]="doctor" [index]="i"></app-doctor>
+
+    </div>
+
+    <div class="pagination">
+        <div class="info">displaying {{doctorsCount}} doctors of {{doctorsFullCount}}</div>
+        <div class="buttons">
+            <div class="previous" (click)="previousPage()"> <button><- </button> </div>
+            <div class="page">PAGE: {{pageNumber}}</div>
+            <div class="next" (click)="nextPage()"> <button>-></button> </div>
+        </div>
+    </div>
+</div>

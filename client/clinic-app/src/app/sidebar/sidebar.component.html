@@ -2,7 +2,7 @@
     <ul>
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/patients">Patients</a>
         </li>
-        <li routerLinkActive="active"><a routerLink="/doctors">Doctors</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/doctors']" [queryParams]="{page:1}">Doctors</a></li>
         <li routerLinkActive="active"><a routerLink="/appointments">Appointments</a></li>
     </ul>
 </div>

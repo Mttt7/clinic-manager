@@ -19,6 +19,11 @@ export class DataService {
     return this.http.get<Patient>(`http://localhost:7000/api/v1/patients/${id}`)
   }
 
+
+  getDoctors(pageNumber: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?page=${pageNumber}`)
+  }
+
   getDoctorById(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors/${id}`)
   }
