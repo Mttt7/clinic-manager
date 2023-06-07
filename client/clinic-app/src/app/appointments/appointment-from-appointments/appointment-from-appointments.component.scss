@@ -1,0 +1,107 @@
+.container {
+    flex: 0 1 800px;
+
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 4fr 2fr 5fr 10fr;
+    gap: 2rem;
+    background-color: antiquewhite;
+    padding: .5rem;
+    padding-left: .8rem;
+
+}
+
+.participants {
+    display: flex;
+    gap: 12rem;
+}
+
+// .doctor-fullname,
+// .patient-fullname {
+//     display: flex;
+// }
+
+.doctor,
+.patient {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.doctor-fullname,
+.patient-fullname,
+.id {
+    width: 9rem; // Możesz dostosować tę wartość według potrzeb
+}
+
+
+
+
+
+.full-name {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    font-weight: 700;
+    padding-right: 1rem;
+}
+
+.appointment-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .button {
+        border-radius: 30px;
+        padding: 1px;
+        background-color: rgba(3, 192, 192, 0.644);
+        border: solid 1px rgba(3, 192, 192, 0.644);
+
+
+    }
+
+    .button:hover {
+        transform: scale(1.07);
+        cursor: pointer;
+
+    }
+}
+
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+
+    div {
+        border-radius: 30px;
+        padding: 1px;
+        background-color: rgba(3, 192, 192, 0.644);
+        border: solid 1px rgba(3, 192, 192, 0.644);
+
+        img {
+            width: 28px;
+        }
+    }
+
+    div:hover {
+        transform: scale(1.07);
+        cursor: pointer;
+    }
+}
+
+a {
+    img {
+        width: 28px;
+    }
+}
+
+.name,
+.surname,
+.date-of-birth,
+.specialization {
+    display: flex;
+    align-items: center;
+}

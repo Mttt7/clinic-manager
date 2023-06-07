@@ -4,6 +4,7 @@
                 [queryParams]="{page:1}">Patients</a>
         </li>
         <li routerLinkActive="active"><a [routerLink]="['/doctors']" [queryParams]="{page:1}">Doctors</a></li>
-        <li routerLinkActive="active"><a routerLink="/appointments">Appointments</a></li>
+        <li routerLinkActive="active"><a routerLink="/appointments" [routerLink]="['/appointments']"
+                [queryParams]="{page:1}">Appointments</a></li>
     </ul>
 </div>

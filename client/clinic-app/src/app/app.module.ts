@@ -22,6 +22,7 @@ import { AppointmentComponent } from './appointments/appointment/appointment.com
 import { AppointmentProfileComponent } from './appointments/appointment-profile/appointment-profile.component';
 import { DoctorProfileComponent } from './doctors/doctor-profile/doctor-profile.component';
 import { DoctorComponent } from './doctors/doctor/doctor.component';
+import { AppointmentFromAppointmentsComponent } from './appointments/appointment-from-appointments/appointment-from-appointments.component';
 
 
 
@@ -41,7 +42,8 @@ import { DoctorComponent } from './doctors/doctor/doctor.component';
     AppointmentComponent,
     AppointmentProfileComponent,
     DoctorProfileComponent,
-    DoctorComponent
+    DoctorComponent,
+    AppointmentFromAppointmentsComponent
   ],
   imports: [
     BrowserModule,

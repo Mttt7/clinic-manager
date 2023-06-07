@@ -10,6 +10,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  //Patients
   getPatients(pageNumber): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/patients?page=${pageNumber}`)
   }
@@ -19,7 +20,7 @@ export class DataService {
     return this.http.get<Patient>(`http://localhost:7000/api/v1/patients/${id}`)
   }
 
-
+  //Doctors
   getDoctors(pageNumber: number): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors?page=${pageNumber}`)
   }
@@ -29,6 +30,11 @@ export class DataService {
   }
   getDoctorAppointment(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors/${id}/appointments`)
+  }
+
+  //Appointments
+  getAppointments(pageNumber: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:7000/api/v1/appointments?page=${pageNumber}`)
   }
 
   getAppointmentById(id: string): Observable<any> {

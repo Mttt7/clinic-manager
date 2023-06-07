@@ -28,6 +28,9 @@
             </div>
         </a>
 
-        <div class="show-appointment"><img src="./../../../assets/calendar.png" alt=""></div>
+        <a [routerLink]="['/appointments', appointment?._id]">
+            <div class="show-appointment"><img src="./../../../assets/calendar.png" alt=""></div>
+        </a>
+
     </div>
 </div>
