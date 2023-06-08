@@ -11,6 +11,11 @@ const patientSchema = new mongoose.Schema({
         required: [true, 'Patient must have a surname!'],
         trim: true
     },
+    sex: {
+        type: String,
+        required: [true, 'Patient must have sex!'],
+        trim: true
+    },
     dateOfBirth: {
         type: Date,
         required: [true, 'Patient must have a birth date!']

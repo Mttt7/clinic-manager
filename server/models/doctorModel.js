@@ -6,6 +6,11 @@ const doctorSchema = new mongoose.Schema({
         required: [true, 'Doctor must have a name!'],
         trim: true
     },
+    sex: {
+        type: String,
+        required: [true, 'Doctor must have sex!'],
+        trim: true
+    },
     surname: {
         type: String,
         required: [true, 'Doctor must have a surname!'],
