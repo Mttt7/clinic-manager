@@ -36,12 +36,14 @@ exports.getAllAppointments = async (req, res) => {
             }
         })
         appointments.sort((a, b) => new Date(a.date).getFullYear - new Date(b.date).getFullYear)
-
+        const fullCount = await Appointment.countDocuments()
         //---send response---
         res.status(200).json({
             status: 'success',
             data: {
+
                 count: appointments.length,
+                fullCount,
                 appointments
             }
         })
