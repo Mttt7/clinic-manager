@@ -1,1 +1,33 @@
-<p>appointment-profile works!</p>
+<div class="container">
+    <div class="personal-info">
+        <div class="profile-photo">
+            <img src="./../../../assets/calendar.png">
+        </div>
+        <div class="date">{{appointment.date | date:'yyyy-MM-dd HH:mm'}}</div>
+        <div class="specialization">{{appointment.doctor.specialization}}</div>
+
+        <div class="patient-info">
+            <a [routerLink]="['/patients',appointment.patient._id]">
+                <div class="show-patient" *ngIf="appointment.patient.sex==='M' "><img
+                        src="./../../../assets/patient-male.png" alt="">
+                </div>
+                <div class="show-patient" *ngIf="appointment.patient.sex==='F' "><img
+                        src="./../../../assets/patient-female.png" alt="">
+                </div>
+            </a>
+            <div class="fullname">{{appointment.patient.name + ' ' + appointment.patient.surname}}</div>
+        </div>
+
+        <div class="doctor-info">
+            <a [routerLink]="['/doctors',appointment.doctor._id]">
+                <div class="show-doctor" *ngIf="appointment.doctor.sex==='M' "><img
+                        src="./../../../assets/doctor-male.png" alt="">
+                </div>
+                <div class="show-doctor" *ngIf="appointment.doctor.sex==='F' "><img
+                        src="./../../../assets/doctor-female.png" alt="">
+                </div>
+            </a>
+            <div class="fullname">{{appointment.doctor.name + ' ' + appointment.doctor.surname}}</div>
+        </div>
+
+    </div>
