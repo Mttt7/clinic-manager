@@ -38,27 +38,47 @@
 
     <div class="create" *ngIf="mode==='create'">
         <form [formGroup]="myForm" [hidden]="success" (ngSubmit)="submitCreate()">
-            Value : {{ myForm.value | json }}
             <hr>
+            <div class="full-name-input-wrapper">
+                <mat-form-field>
+                    <input matInput placeholder="doctor" formControlName="doctorFullName">
+                </mat-form-field>
+                <div class="reset-btn" *ngIf="doctorChosen" (click)="resetDoctor()">reset</div>
+            </div>
 
-            <mat-form-field>
-                <input matInput placeholder="doctorFullName" formControlName="doctorFullName">
-            </mat-form-field>
             <div class="doctor-search-results" *ngFor="let doctor of searchedDoctors">
-                <div class="doctor-search-result">
+                <div class="doctor-search-result" (click)="chooseDoctor(doctor)" *ngIf="!doctorChosen">
                     <div class="full-name">{{doctor?.fullName}}</div>
                     <div class="specialization">{{doctor?.specialization}}</div>
                 </div>
             </div>
 
+            <div class="full-name-input-wrapper">
+                <mat-form-field>
+                    <input matInput placeholder="patient" formControlName="patientFullName">
+                </mat-form-field>
+                <div class="reset-btn" *ngIf="patientChosen" (click)="resetPatient()">reset</div>
+            </div>
 
-            <mat-form-field>
-                <input matInput placeholder="patientFullName" formControlName="patientFullName">
-            </mat-form-field>
+            <div class="patient-search-results" *ngFor="let patient of searchedPatients">
+                <div class="patient-search-result" (click)="choosePatient(patient)" *ngIf="!patientChosen">
+                    <div class="full-name">{{patient?.fullName}}</div>
+                    <div class="pesel">{{patient?.pesel}}</div>
+                </div>
+            </div>
 
-            <mat-form-field>
-                <input matInput placeholder="date" formControlName="date">
-            </mat-form-field>
+            <div class="date-picker">
+                <mat-card class="calendar-card" (click)="runValidator()">
+                    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+                </mat-card>
+                <input type="time" formControlName="time">
+            </div>
+
+
+
+
+
+
 
             <button mat-button color="primary" type="submit" [disabled]="myForm.invalid">SUBMIT</button>
         </form>

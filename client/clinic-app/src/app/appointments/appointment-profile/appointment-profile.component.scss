@@ -12,3 +12,39 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+.calendar-card {
+    width: 300px;
+}
+
+.full-name-input-wrapper {
+    display: flex;
+    align-items: center;
+
+
+    .reset-btn {
+        background-color: lightcoral;
+        border-radius: 10px;
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    .reset-btn:hover {
+        transform: scale(1.07);
+    }
+}
+
+
+
+.patient-search-result,
+.doctor-search-result {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    background-color: antiquewhite;
+
+    .specialization {
+        font-weight: 500;
+        font-style: italic;
+    }
+}

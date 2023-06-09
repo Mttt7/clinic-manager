@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Patient } from '../models/patient.model';
@@ -8,6 +8,14 @@ import { Appointment } from '../models/appointment.model';
   providedIn: 'root'
 })
 export class DataService {
+
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +27,11 @@ export class DataService {
   getPatientById(id: string): Observable<any> {
     //                   V??????V  change to<any>??
     return this.http.get<Patient>(`http://localhost:7000/api/v1/patients/${id}`)
+  }
+
+  searchForPatient(fullName: string): Observable<any> {
+    fullName = fullName.split(' ').join('-')
+    return this.http.get<any>(`http://localhost:7000/api/v1/patients?search=${fullName}`)
   }
 
   //Doctors
@@ -51,7 +64,9 @@ export class DataService {
   }
 
   createNewAppointment(appointment: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:7000/api/v1/appointments`, JSON.stringify(appointment))
+    console.log(appointment)
+    console.log(JSON.stringify(appointment))
+    return this.http.post<any>(`http://localhost:7000/api/v1/appointments`, JSON.stringify(appointment), this.httpOptions)
   }
 
 
