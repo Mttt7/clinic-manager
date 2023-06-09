@@ -6,8 +6,7 @@
 
         </div>
         <div class="full-name">
-            <div class="name">{{patient?.name}}</div>
-            <div class="surname">{{patient?.surname}}</div>
+            {{patient?.fullName}}
         </div>
         <div class="pesel">{{patient?.pesel}}</div>
         <div class="birthday">{{patient?.dateOfBirth}}</div>
@@ -17,6 +16,7 @@
 
     <div class="appointments">
         Appointments:
+        <app-add-appointment-button></app-add-appointment-button>
         <app-appointment *ngFor="let appointment of appointments" [appointment]="appointment"
             [fromPatient]="true"></app-appointment>
     </div>

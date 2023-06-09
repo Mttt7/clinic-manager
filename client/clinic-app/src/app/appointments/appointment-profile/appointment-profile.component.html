@@ -1,33 +1,70 @@
 <div class="container">
-    <div class="personal-info">
-        <div class="profile-photo">
-            <img src="./../../../assets/calendar.png">
-        </div>
-        <div class="date">{{appointment.date | date:'yyyy-MM-dd HH:mm'}}</div>
-        <div class="specialization">{{appointment.doctor.specialization}}</div>
+    <div class="display" *ngIf="mode==='display'">
+        <div class="personal-info">
+            <div class="profile-photo">
+                <img src="./../../../assets/calendar.png">
+            </div>
+            <div class="date">{{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
+            <div class="specialization">{{appointment?.doctor.specialization}}</div>
 
-        <div class="patient-info">
-            <a [routerLink]="['/patients',appointment.patient._id]">
-                <div class="show-patient" *ngIf="appointment.patient.sex==='M' "><img
-                        src="./../../../assets/patient-male.png" alt="">
-                </div>
-                <div class="show-patient" *ngIf="appointment.patient.sex==='F' "><img
-                        src="./../../../assets/patient-female.png" alt="">
-                </div>
-            </a>
-            <div class="fullname">{{appointment.patient.name + ' ' + appointment.patient.surname}}</div>
-        </div>
+            <div class="patient-info">
+                <a [routerLink]="['/patients',appointment?.patient._id]">
+                    <div class="show-patient" *ngIf="appointment?.patient.sex==='M' "><img
+                            src="./../../../assets/patient-male.png" alt="">
+                    </div>
+                    <div class="show-patient" *ngIf="appointment?.patient.sex==='F' "><img
+                            src="./../../../assets/patient-female.png" alt="">
+                    </div>
+                </a>
+                <div class="fullname">{{appointment?.patient.fullName}}</div>
+            </div>
 
-        <div class="doctor-info">
-            <a [routerLink]="['/doctors',appointment.doctor._id]">
-                <div class="show-doctor" *ngIf="appointment.doctor.sex==='M' "><img
-                        src="./../../../assets/doctor-male.png" alt="">
-                </div>
-                <div class="show-doctor" *ngIf="appointment.doctor.sex==='F' "><img
-                        src="./../../../assets/doctor-female.png" alt="">
-                </div>
-            </a>
-            <div class="fullname">{{appointment.doctor.name + ' ' + appointment.doctor.surname}}</div>
+            <div class="doctor-info">
+                <a [routerLink]="['/doctors',appointment?.doctor._id]">
+                    <div class="show-doctor" *ngIf="appointment?.doctor.sex==='M' "><img
+                            src="./../../../assets/doctor-male.png" alt="">
+                    </div>
+                    <div class="show-doctor" *ngIf="appointment?.doctor.sex==='F' "><img
+                            src="./../../../assets/doctor-female.png" alt="">
+                    </div>
+                </a>
+                <div class="fullname">{{appointment?.doctor.fullName}}</div>
+            </div>
         </div>
 
     </div>
+
+    <div class="edit" *ngIf=""></div>
+
+    <div class="create" *ngIf="mode==='create'">
+        <form [formGroup]="myForm" [hidden]="success" (ngSubmit)="submitCreate()">
+            Value : {{ myForm.value | json }}
+            <hr>
+
+            <mat-form-field>
+                <input matInput placeholder="doctorFullName" formControlName="doctorFullName">
+            </mat-form-field>
+            <div class="doctor-search-results" *ngFor="let doctor of searchedDoctors">
+                <div class="doctor-search-result">
+                    <div class="full-name">{{doctor?.fullName}}</div>
+                    <div class="specialization">{{doctor?.specialization}}</div>
+                </div>
+            </div>
+
+
+            <mat-form-field>
+                <input matInput placeholder="patientFullName" formControlName="patientFullName">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="date" formControlName="date">
+            </mat-form-field>
+
+            <button mat-button color="primary" type="submit" [disabled]="myForm.invalid">SUBMIT</button>
+        </form>
+        <div class="notification-success" *ngIf="success">
+            Appointment added successfully!
+            <button mat-button color="primary">SEE APPOINTMENT</button>
+        </div>
+    </div>
+</div>

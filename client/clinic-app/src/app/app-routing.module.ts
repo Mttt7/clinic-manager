@@ -1,3 +1,5 @@
+import { AddAppointmentButtonComponent } from "./appointments/add-appointment-button/add-appointment-button.component";
+
 import { AppointmentProfileComponent } from "./appointments/appointment-profile/appointment-profile.component";
 import { AppointmentsComponent } from "./appointments/appointments.component";
 import { DoctorProfileComponent } from "./doctors/doctor-profile/doctor-profile.component";
@@ -16,6 +18,7 @@ const appRoutes: Routes = [
     { path: 'appointments', component: AppointmentsComponent },
     { path: 'appointments/:id', component: AppointmentProfileComponent },
     { path: 'patients/:id', component: PatientProfileComponent },
+    { path: 'patients/:id/:appId', component: AppointmentProfileComponent },
 
 ]
 

@@ -2,9 +2,7 @@
 
     <div class="id">{{index+1}}</div>
     <div class="full-name">
-        <div class="surname">{{patient.surname}}</div>
-        <div class="name">{{patient.name}}</div>
-
+        {{patient?.fullName}}
     </div>
     <div class="city">{{patient.city}}</div>
     <div class="date-of-birth">{{patient.dateOfBirth | date:'yyyy-MM-dd'}}</div>

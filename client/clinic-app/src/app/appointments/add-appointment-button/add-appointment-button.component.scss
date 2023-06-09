@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+
+    .add {
+        background-color: aqua;
+        padding: 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .add:hover {
+        transform: scale(1.07);
+        font-weight: 700;
+    }
+}

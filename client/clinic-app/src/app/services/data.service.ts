@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Patient } from '../models/patient.model';
+import { Appointment } from '../models/appointment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class DataService {
   getDoctorAppointment(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors/${id}/appointments`)
   }
+  searchForDoctor(fullName: string): Observable<any> {
+    fullName = fullName.split(' ').join('-')
+    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${fullName}`)
+  }
 
   //Appointments
   getAppointments(pageNumber: number): Observable<any> {
@@ -43,6 +48,10 @@ export class DataService {
 
   getPatientAppointment(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/patients/${id}/appointments`)
+  }
+
+  createNewAppointment(appointment: any): Observable<any> {
+    return this.http.post<any>(`http://localhost:7000/api/v1/appointments`, JSON.stringify(appointment))
   }
 
 

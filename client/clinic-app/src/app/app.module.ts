@@ -23,7 +23,16 @@ import { AppointmentProfileComponent } from './appointments/appointment-profile/
 import { DoctorProfileComponent } from './doctors/doctor-profile/doctor-profile.component';
 import { DoctorComponent } from './doctors/doctor/doctor.component';
 import { AppointmentFromAppointmentsComponent } from './appointments/appointment-from-appointments/appointment-from-appointments.component';
+import { AddAppointmentButtonComponent } from './appointments/add-appointment-button/add-appointment-button.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModuleConfig } from '@angular/platform-browser/animations';
+
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -43,7 +52,8 @@ import { AppointmentFromAppointmentsComponent } from './appointments/appointment
     AppointmentProfileComponent,
     DoctorProfileComponent,
     DoctorComponent,
-    AppointmentFromAppointmentsComponent
+    AppointmentFromAppointmentsComponent,
+    AddAppointmentButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +62,13 @@ import { AppointmentFromAppointmentsComponent } from './appointments/appointment
     BrowserAnimationsModule,
     NgxPaginationModule,
     MatProgressSpinnerModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

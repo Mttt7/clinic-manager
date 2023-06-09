@@ -2,9 +2,7 @@
 
     <div class="id">{{index+1}}</div>
     <div class="full-name">
-        <div class="surname">{{doctor.surname}}</div>
-        <div class="name">{{doctor.name}}</div>
-
+        {{doctor?.fullName}}
     </div>
     <div class="date-of-birth">{{doctor.dateOfBirth | date:'yyyy-MM-dd'}}</div>
     <div class="specialization">{{doctor.specialization}}</div>

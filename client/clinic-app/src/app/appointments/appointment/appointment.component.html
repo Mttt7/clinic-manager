@@ -2,9 +2,9 @@
     <div class="specialization">{{appointment?.doctor.specialization}}</div>
 
 
-    <div class="doctor" *ngIf="fromPatient">{{appointment?.doctor.name + ' ' + appointment?.doctor.surname}}</div>
+    <div class="doctor" *ngIf="fromPatient">{{appointment?.doctor.fullName}}</div>
 
-    <div class="patient" *ngIf="fromDoctor">{{appointment?.patient.name + ' ' + appointment?.patient.surname}}</div>
+    <div class="patient" *ngIf="fromDoctor">{{appointment?.patient.fullName}}</div>
 
 
 
@@ -28,7 +28,7 @@
             </div>
         </a>
 
-        <a [routerLink]="['/appointments', appointment?._id]">
+        <a [routerLink]="['/appointments', appointment?._id]" [queryParams]="{mode:'display'}">
             <div class="show-appointment"><img src="./../../../assets/calendar.png" alt=""></div>
         </a>
 

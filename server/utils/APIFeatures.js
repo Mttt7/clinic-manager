@@ -5,23 +5,25 @@ class APIFeatures {
     }
 
     filter() {
-        const queryObj = { ...this.queryString };
+        let queryObj = { ...this.queryString };
         const excludeFields = ['page', 'sort', 'limit', 'fields', 'search'];
         excludeFields.forEach((el) => delete queryObj[el]);
 
-        const searchQuery = this.queryString.search;
+        let searchQuery = this.queryString.search;
+        console.log(searchQuery);
 
         if (searchQuery) {
-            queryObj.$or = [
-                { name: { $regex: searchQuery, $options: "i" } },
-                { surname: { $regex: searchQuery, $options: "i" } }
-            ];
+            const searchValue = searchQuery.split('-').join(' ')
+            console.log(searchValue)
+            const searchRegExp = new RegExp(`^${searchValue}`, 'i')
+
+            queryObj = { fullName: { $all: searchRegExp } };
         }
 
-        this.query = this.query.find(queryObj);
-
+        this.query = this.query.find(queryObj)
         return this;
     }
+
 
     sort() {
         if (this.queryString.sort) {
@@ -29,7 +31,7 @@ class APIFeatures {
             console.log(sortBy)
             this.query = this.query.sort(sortBy)
         } else { //default
-            this.query = this.query.sort({ surname: 1 })
+            this.query = this.query.sort({ fullName: 1 })
             //  || this.query.sort('date') ??
         }
 

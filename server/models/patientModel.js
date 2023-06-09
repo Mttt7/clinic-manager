@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 
 const patientSchema = new mongoose.Schema({
-    name: {
+    fullName: {
         type: String,
-        required: [true, 'Patient must have a name!'],
-        trim: true
-    },
-    surname: {
-        type: String,
-        required: [true, 'Patient must have a surname!'],
+        required: [true, 'Patient must have a fullName!'],
         trim: true
     },
     sex: {
