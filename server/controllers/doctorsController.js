@@ -38,7 +38,7 @@ exports.getAllDoctors = async (req, res) => {
 exports.addNewDoctor = async (req, res) => {
     try {
         const newDoctor = await Doctor.create(req.body)
-        res.status(400).json({
+        res.status(200).json({
             status: 'success',
             data: {
                 doctor: newDoctor

@@ -4,6 +4,7 @@
     </div>
 
     <div class="doctors">
+        <app-add-new-person-button [mode]="'doctor'"></app-add-new-person-button>
         <app-doctor *ngFor="let doctor of doctors, let i = index" [doctor]="doctor" [index]="i"></app-doctor>
 
     </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Patient } from '../models/patient.model';
 import { Appointment } from '../models/appointment.model';
+import { Doctor } from '../models/doctor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,10 @@ export class DataService {
     fullName = fullName.split(' ').join('-')
     return this.http.get<any>(`http://localhost:7000/api/v1/patients?search=${fullName}`)
   }
-  createNewPatient(patient: Patient) {
+  createNewPatient(patient: Patient): Observable<any> {
     return this.http.post<any>(`http://localhost:7000/api/v1/patients`, JSON.stringify(patient), this.httpOptions)
   }
-  editPatient(id: string, patient: Patient) {
+  editPatient(id: string, patient: Patient): Observable<any> {
     return this.http.patch<any>(`http://localhost:7000/api/v1/patients/${id}`, JSON.stringify(patient), this.httpOptions)
   }
 
@@ -54,6 +55,10 @@ export class DataService {
   searchForDoctor(fullName: string): Observable<any> {
     fullName = fullName.split(' ').join('-')
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${fullName}`)
+  }
+  createNewDoctor(doctor: Doctor): Observable<any> {
+    return this.http.post<any>(`http://localhost:7000/api/v1/doctors`, JSON.stringify(doctor), this.httpOptions)
+
   }
 
   //Appointments
