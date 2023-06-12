@@ -2,7 +2,7 @@
 
     <div class="id">{{index+1}}</div>
     <div class="appointment-link">
-        <a [routerLink]="['/appointments', appointment?._id]">
+        <a [routerLink]="['/appointments', appointment?._id]" [queryParams]="{mode:'display'}">
             <div class="show-appointment button"><img src="./../../../assets/calendar.png" alt=""></div>
         </a>
     </div>
