@@ -4,6 +4,7 @@
     </div>
 
     <div class="appointments">
+        <app-add-appointment-button></app-add-appointment-button>
         <app-appointment-from-appointments *ngFor="let appointment of appointments, let i = index"
             [appointment]="appointment" [index]="i"></app-appointment-from-appointments>
 
