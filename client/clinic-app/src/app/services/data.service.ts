@@ -64,9 +64,10 @@ export class DataService {
   }
 
   createNewAppointment(appointment: any): Observable<any> {
-    console.log(appointment)
-    console.log(JSON.stringify(appointment))
     return this.http.post<any>(`http://localhost:7000/api/v1/appointments`, JSON.stringify(appointment), this.httpOptions)
+  }
+  editAppointment(id: string, appointment: any): Observable<any> {
+    return this.http.patch<any>(`http://localhost:7000/api/v1/appointments/${id}`, JSON.stringify(appointment), this.httpOptions)
   }
 
 

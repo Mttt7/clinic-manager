@@ -4,6 +4,7 @@
             <div class="profile-photo">
                 <img src="./../../../assets/calendar.png">
             </div>
+            <button (click)="changeToEditMode()">edit</button>
             <div class="date">{{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
             <div class="specialization">{{appointment?.doctor.specialization}}</div>
 
@@ -34,10 +35,10 @@
 
     </div>
 
-    <div class="edit" *ngIf=""></div>
 
-    <div class="create" *ngIf="mode==='create'">
-        <form [formGroup]="myForm" [hidden]="success" (ngSubmit)="submitCreate()">
+
+    <div class="create" *ngIf="mode==='create' || mode==='edit'">
+        <form [formGroup]="myForm" [hidden]="success" (ngSubmit)="submit()">
             <hr>
             <div class="full-name-input-wrapper">
                 <mat-form-field>
@@ -69,9 +70,9 @@
 
             <div class="date-picker">
                 <mat-card class="calendar-card" (click)="runValidator()">
-                    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+                    <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
                 </mat-card>
-                <input type="time" formControlName="time">
+                <input type="time" #time formControlName="time">
             </div>
 
 
@@ -84,7 +85,7 @@
         </form>
         <div class="notification-success" *ngIf="success">
             Appointment added successfully!
-            <button mat-button color="primary">SEE APPOINTMENT</button>
+            <button mat-button color="primary" (click)="showNewAppointment()"> SEE APPOINTMENT</button>
         </div>
     </div>
 </div>

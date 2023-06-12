@@ -16,7 +16,7 @@
 
     <div class="appointments">
         Appointments:
-        <app-add-appointment-button></app-add-appointment-button>
+        <app-add-appointment-button [patient]="patient"></app-add-appointment-button>
         <app-appointment *ngFor="let appointment of appointments" [appointment]="appointment"
             [fromPatient]="true"></app-appointment>
     </div>
