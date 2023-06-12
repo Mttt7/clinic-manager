@@ -36,6 +36,9 @@ export class DataService {
   createNewPatient(patient: Patient) {
     return this.http.post<any>(`http://localhost:7000/api/v1/patients`, JSON.stringify(patient), this.httpOptions)
   }
+  editPatient(id: string, patient: Patient) {
+    return this.http.patch<any>(`http://localhost:7000/api/v1/patients/${id}`, JSON.stringify(patient), this.httpOptions)
+  }
 
   //Doctors
   getDoctors(pageNumber: number): Observable<any> {

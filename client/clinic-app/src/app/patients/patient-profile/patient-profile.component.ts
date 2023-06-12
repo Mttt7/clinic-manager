@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Appointment } from 'src/app/models/appointment.model';
 import { Patient } from 'src/app/models/patient.model';
 import { DataService } from 'src/app/services/data.service';
@@ -16,7 +16,15 @@ export class PatientProfileComponent implements OnInit {
   patient: Patient
   appointments: string[] = []
   constructor(private route: ActivatedRoute,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private router: Router) { }
+
+
+
+  onEditButtonClicked() {
+    this.router.navigate([`edit-patient`, `${this.patient._id}`])
+  }
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id']

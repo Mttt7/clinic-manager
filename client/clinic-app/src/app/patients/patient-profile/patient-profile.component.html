@@ -13,7 +13,7 @@
         <div class="city">{{patient?.city}}</div>
         <div class="address">{{patient?.address}}</div>
     </div>
-
+    <div class="edit"><button (click)="onEditButtonClicked()">EDIT</button></div>
     <div class="appointments">
         Appointments:
         <app-add-appointment-button [patient]="patient"></app-add-appointment-button>

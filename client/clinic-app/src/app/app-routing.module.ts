@@ -4,6 +4,7 @@ import { AppointmentProfileComponent } from "./appointments/appointment-profile/
 import { AppointmentsComponent } from "./appointments/appointments.component";
 import { DoctorProfileComponent } from "./doctors/doctor-profile/doctor-profile.component";
 import { DoctorsComponent } from "./doctors/doctors.component";
+import { EditPatientFormComponent } from "./patients/edit-patient-form/edit-patient-form.component";
 import { NewPatientFormComponent } from "./patients/new-patient-form/new-patient-form.component";
 import { PatientProfileComponent } from "./patients/patient-profile/patient-profile.component";
 import { PatientsComponent } from "./patients/patients.component";
@@ -13,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router'
 
 
 const appRoutes: Routes = [
+
+    { path: 'edit-patient/:id', component: EditPatientFormComponent },
     { path: 'add-patient', component: NewPatientFormComponent },
     { path: 'patients', component: PatientsComponent },
     { path: 'doctors', component: DoctorsComponent },
