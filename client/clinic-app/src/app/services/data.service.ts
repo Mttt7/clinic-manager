@@ -33,6 +33,9 @@ export class DataService {
     fullName = fullName.split(' ').join('-')
     return this.http.get<any>(`http://localhost:7000/api/v1/patients?search=${fullName}`)
   }
+  createNewPatient(patient: Patient) {
+    return this.http.post<any>(`http://localhost:7000/api/v1/patients`, JSON.stringify(patient), this.httpOptions)
+  }
 
   //Doctors
   getDoctors(pageNumber: number): Observable<any> {

@@ -36,7 +36,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { AddNewPatientButtonComponent } from './patients/add-new-patient-button/add-new-patient-button.component';
+import { NewPatientFormComponent } from './patients/new-patient-form/new-patient-form.component';
+import { EditPatientFormComponent } from './patients/edit-patient-form/edit-patient-form.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -56,7 +60,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     DoctorProfileComponent,
     DoctorComponent,
     AppointmentFromAppointmentsComponent,
-    AddAppointmentButtonComponent
+    AddAppointmentButtonComponent,
+    AddNewPatientButtonComponent,
+    NewPatientFormComponent,
+    EditPatientFormComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +81,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatChipsModule,
     MatDatepickerModule,
     MatCardModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule,
+    MatFormFieldModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

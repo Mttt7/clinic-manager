@@ -35,7 +35,7 @@ exports.getAllPatients = async (req, res) => {
 exports.addNewPatient = async (req, res) => {
     try {
         const newPatient = await Patient.create(req.body)
-        res.status(400).json({
+        res.status(200).json({
             status: 'success',
             data: {
                 patient: newPatient
