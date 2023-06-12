@@ -26,14 +26,14 @@ export class AppointmentProfileComponent implements OnInit {
   selectedDate: Date | null;
   id: string
   appointment: Appointment
-  mode: string //display edit create
+  mode: string // /display/ /edit/ /create/
 
   searchedDoctors: Doctor[] = []
   searchedPatients: Patient[] = []
 
   patient: Patient //if clicked on a patient profile
-  patientID: string
   doctor: Doctor  //if clicked on a doctor profile
+  patientID: string
   doctorID: string
 
   patientChosen: boolean = false
@@ -52,9 +52,7 @@ export class AppointmentProfileComponent implements OnInit {
   submit(): void {
     if (this.mode === 'create') this.submitCreate()
     if (this.mode === 'edit') this.submitEdit()
-
   }
-
   submitCreate() {
     this.loading = true
     const formValue = this.myForm.value;
@@ -70,10 +68,9 @@ export class AppointmentProfileComponent implements OnInit {
       }
 
       let appID: string
-      console.log('APPOINTMENT:--->', appointment)
+
       this.dataService.createNewAppointment(appointment).subscribe(
         (response) => {
-          console.log(response)
           appID = response.data.appointment._id
           this.id = appID;
           this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
@@ -89,7 +86,6 @@ export class AppointmentProfileComponent implements OnInit {
     this.loading = false
 
   }
-
   submitEdit() {
     this.loading = true
     const formValue = this.myForm.value;
@@ -105,10 +101,9 @@ export class AppointmentProfileComponent implements OnInit {
       }
 
       let appID = this.route.snapshot.params['id']
-      console.log('APPOINTMENT:--->', appointment)
+
       this.dataService.editAppointment(appID, appointment).subscribe(
         (response) => {
-          console.log(response)
           this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
           this.success = true
         }, (error) => console.log(error))
@@ -127,7 +122,6 @@ export class AppointmentProfileComponent implements OnInit {
     if (this.myForm.value.patientFullName?.length > 1) {
       this.dataService.searchForPatient(this.myForm.value.patientFullName).subscribe((data) => {
         this.searchedPatients = data.data.patients
-        console.log(this.searchedPatients)
       })
     }
     else {
@@ -139,7 +133,6 @@ export class AppointmentProfileComponent implements OnInit {
     if (this.myForm.value.doctorFullName?.length > 1) {
       this.dataService.searchForDoctor(this.myForm.value.doctorFullName).subscribe((data) => {
         this.searchedDoctors = data.data.doctors
-        console.log(this.searchedDoctors)
       })
     }
     else {
@@ -174,12 +167,10 @@ export class AppointmentProfileComponent implements OnInit {
     this.doctorChosen = false
     this.myForm.get('doctorFullName')?.enable()
     this.searchedDoctors = []
-    // console.log(this.myForm.get('time').value)
   }
 
   missingChoicesValidator = () => {
     if (this.doctorChosen && this.patientChosen && this.selectedDate !== undefined) {
-      // console.log(this.selectedDate)
       return null;
     } else {
       return { missingChoices: true };
@@ -188,19 +179,11 @@ export class AppointmentProfileComponent implements OnInit {
 
   runValidator = () => {
     this.myForm.get('time').updateValueAndValidity()
-
-
   }
-  showdate() {
-    console.log(this.selectedDate)
-    const date = new Date(this.selectedDate)
-    this.myForm.get('time')?.patchValue(date.getHours() + ':' + date.getMinutes())
-  }
+
   showNewAppointment() {
     this.router.navigate([], { queryParams: { mode: 'display' } })
   }
-
-
 
   changeToEditMode() {
     this.success = false
@@ -221,13 +204,10 @@ export class AppointmentProfileComponent implements OnInit {
   }
 
 
-
   ngAfterViewInit() {
     if (this.calendar) {
       this.calendar.updateTodaysDate();
     }
-    //this.myForm.get('time').patchValue(this.selectedDate.getHours() + ':' + this.selectedDate.getMinutes())
-    // this.myForm.get('time').patchValue(this.selectedDate.getHours() + ':' + this.selectedDate.getMinutes())
   }
 
   ngOnInit(): void {
