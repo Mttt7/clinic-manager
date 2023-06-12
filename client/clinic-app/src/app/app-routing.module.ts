@@ -4,6 +4,7 @@ import { AppointmentProfileComponent } from "./appointments/appointment-profile/
 import { AppointmentsComponent } from "./appointments/appointments.component";
 import { DoctorProfileComponent } from "./doctors/doctor-profile/doctor-profile.component";
 import { DoctorsComponent } from "./doctors/doctors.component";
+import { EditDoctorFormComponent } from "./doctors/edit-doctor-form/edit-doctor-form.component";
 import { NewDoctorFormComponent } from "./doctors/new-doctor-form/new-doctor-form.component";
 import { EditPatientFormComponent } from "./patients/edit-patient-form/edit-patient-form.component";
 import { NewPatientFormComponent } from "./patients/new-patient-form/new-patient-form.component";
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'edit-patient/:id', component: EditPatientFormComponent },
     { path: 'add-patient', component: NewPatientFormComponent },
     { path: 'patients', component: PatientsComponent },
+    { path: 'edit-doctor/:id', component: EditDoctorFormComponent },
     { path: 'add-doctor', component: NewDoctorFormComponent },
     { path: 'doctors', component: DoctorsComponent },
     { path: 'doctors/:id', component: DoctorProfileComponent },

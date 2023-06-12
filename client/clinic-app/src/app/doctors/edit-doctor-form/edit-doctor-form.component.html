@@ -1,1 +1,35 @@
-<p>edit-doctor-form works!</p>
+<div class="container">
+    <form [formGroup]="myForm" [hidden]="success">
+
+        <mat-form-field>
+            <input matInput placeholder="Full Name" formControlName="fullName">
+        </mat-form-field>
+
+
+        <mat-radio-group formControlName="sex">
+            <mat-radio-button value="M">M</mat-radio-button>
+            <mat-radio-button value="F">F</mat-radio-button>
+        </mat-radio-group>
+
+
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput formControlName="dateOfBirth" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="specialization" formControlName="specialization">
+        </mat-form-field>
+
+        <button mat-button color="primary" type="submit" [disabled]="myForm.invalid" (click)="submit()">SUBMIT</button>
+
+    </form>
+    <div class="notification-success" *ngIf="success">
+        Doctor edited successfully!
+        <button mat-button color="primary" (click)="seeDoctor()"> SEE DOCTOR</button>
+    </div>
+</div>

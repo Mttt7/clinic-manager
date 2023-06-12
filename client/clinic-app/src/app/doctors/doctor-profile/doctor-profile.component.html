@@ -11,7 +11,7 @@
         <div class="birthday">{{doctor?.dateOfBirth}}</div>
         <div class="specialization">{{doctor?.specialization}}</div>
     </div>
-
+    <div class="edit"><button (click)="onEditButtonClicked()">EDIT</button></div>
     <div class="appointments">
         Appointments:
         <app-add-appointment-button [doctor]="doctor"></app-add-appointment-button>

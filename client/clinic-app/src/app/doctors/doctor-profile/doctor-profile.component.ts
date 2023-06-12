@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor.model';
 import { DataService } from 'src/app/services/data.service';
 
@@ -15,7 +15,14 @@ export class DoctorProfileComponent {
   appointments: string[] = []
 
   constructor(private route: ActivatedRoute,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private router: Router) { }
+
+  onEditButtonClicked() {
+    this.router.navigate([`edit-doctor`, `${this.doctor._id}`])
+  }
+
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id']
