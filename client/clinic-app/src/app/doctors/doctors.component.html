@@ -10,12 +10,13 @@
 
     </div>
 
-    <div class=" pagination">
-        <div class="info">displaying {{doctorsCount}} doctors of {{doctorsFullCount}}</div>
+    <div class="pagination">
+        <div class="info"> {{doctorsCount}} of {{doctorsFullCount}}</div>
         <div class="buttons">
-            <div class="previous" (click)="previousPage()"> <button><- </button> </div>
-            <div class="page">PAGE: {{pageNumber}}</div>
-            <div class="next" (click)="nextPage()"> <button>-></button> </div>
+            <div class="previous" (click)="previousPage()"> <img src="./../../assets/arrow-left.png"
+                    alt="previous page"> </div>
+            <div class="page">{{pageNumber}}</div>
+            <div class="next" (click)="nextPage()"> <img src="./../../assets/arrow-right.png" alt="next page"> </div>
         </div>
     </div>
 </div>

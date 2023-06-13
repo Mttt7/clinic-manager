@@ -15,9 +15,41 @@
     padding: 2rem;
 }
 
-.buttons,
+
 .info {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .4rem;
+
+    .page {
+        color: white;
+        font-size: 3rem;
+    }
+
+    img {
+        transition: 0.3s ease;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .previous {
+        img:hover {
+            transform: translateX(-10px);
+        }
+    }
+
+    .next {
+        img:hover {
+            transform: translateX(10px);
+        }
+    }
+
 }
