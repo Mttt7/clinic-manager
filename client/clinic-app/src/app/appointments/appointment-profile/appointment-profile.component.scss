@@ -1,3 +1,70 @@
+//display mode------------
+.display {
+    .profile-photo {
+        img {
+            width: 300px;
+        }
+
+    }
+
+    .details {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 400px;
+
+        color: rgb(255, 254, 254);
+        background: rgba(0, 0, 0, 0.308);
+        border-radius: 10px;
+        padding: 1rem;
+
+    }
+
+    .down-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .edit-button {
+        width: 150px;
+        background-color: white;
+    }
+
+    .edit-button:hover {
+        transform: scale(1.07);
+    }
+
+    .date,
+    .specialization {
+        font-size: 1.2rem;
+    }
+
+    .show-doctor,
+    .show-patient {
+        img:hover {
+            transform: scale(1.07);
+        }
+    }
+}
+
+
+
+
+//------------------------
+
+
 .container {
     display: flex;
     align-items: center;
@@ -45,15 +112,6 @@ mat-form-field {
     display: flex;
 
     align-items: center;
-
-
-
-    // .reset-btn {
-
-    //     border-radius: 10px;
-    //     padding: 3px;
-    //     cursor: pointer;
-    // }
 
     .reset-btn:hover {
         transform: scale(1.07);

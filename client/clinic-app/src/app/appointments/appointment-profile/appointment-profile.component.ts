@@ -60,7 +60,6 @@ export class AppointmentProfileComponent implements OnInit {
     this.selectedDate.setMinutes(formValue.time.split(':')[1]);
 
     try {
-
       const appointment = {
         date: this.selectedDate.toISOString(),
         patient: this.patientID,
@@ -73,12 +72,8 @@ export class AppointmentProfileComponent implements OnInit {
         (response) => {
           appID = response.data.appointment._id
           this.id = appID;
-
           this.success = true
         }, (error) => console.log(error))
-
-
-
 
     } catch (error) {
       console.log('ERROR:--->', error)
@@ -104,12 +99,8 @@ export class AppointmentProfileComponent implements OnInit {
 
       this.dataService.editAppointment(appID, appointment).subscribe(
         (response) => {
-          this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
           this.success = true
         }, (error) => console.log(error))
-
-
-
 
     } catch (error) {
       console.log('ERROR:--->', error)
@@ -182,6 +173,7 @@ export class AppointmentProfileComponent implements OnInit {
   }
 
   showNewAppointment() {
+    this.updateData()
     this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
   }
 
@@ -210,21 +202,7 @@ export class AppointmentProfileComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-
-    this.mode = this.route.snapshot.queryParams['mode']
-    this.route.queryParams.subscribe((params: Params) => {
-      this.mode = params['mode']
-    })
-    this.myForm = this.fb.group({
-      doctorFullName: ['', [Validators.required, this.missingChoicesValidator]],
-      patientFullName: ['', [Validators.required, this.missingChoicesValidator]],
-      time: ['', [Validators.required, this.missingChoicesValidator]]
-    });
-
-    this.myForm.valueChanges.subscribe(() => this.searchDoctor())
-    this.myForm.valueChanges.subscribe(() => this.searchPatient())
-
+  updateData() {
     if (this.mode === 'create' || this.mode === 'edit') {
       const patientID = this.route.snapshot.queryParams['patientID']
       const doctorID = this.route.snapshot.queryParams['doctorID']
@@ -252,6 +230,24 @@ export class AppointmentProfileComponent implements OnInit {
         console.log(this.appointment)
       })
     }
+  }
+
+  ngOnInit(): void {
+
+    this.mode = this.route.snapshot.queryParams['mode']
+    this.route.queryParams.subscribe((params: Params) => {
+      this.mode = params['mode']
+    })
+    this.myForm = this.fb.group({
+      doctorFullName: ['', [Validators.required, this.missingChoicesValidator]],
+      patientFullName: ['', [Validators.required, this.missingChoicesValidator]],
+      time: ['', [Validators.required, this.missingChoicesValidator]]
+    });
+
+    this.myForm.valueChanges.subscribe(() => this.searchDoctor())
+    this.myForm.valueChanges.subscribe(() => this.searchPatient())
+    this.updateData()
+
 
   }
 }

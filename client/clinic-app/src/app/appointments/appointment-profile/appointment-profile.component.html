@@ -1,36 +1,45 @@
 <div class="container">
     <div class="display" *ngIf="mode==='display'">
-        <div class="personal-info">
+        <div class="details">
+
             <div class="profile-photo">
                 <img src="./../../../assets/calendar.png">
             </div>
-            <button (click)="changeToEditMode()">edit</button>
-            <div class="date">{{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
-            <div class="specialization">{{appointment?.doctor.specialization}}</div>
+            <div class="wrapper">
+                <div class="patient-info">
+                    <a [routerLink]="['/patients',appointment?.patient._id]">
+                        <div class="show-patient" *ngIf="appointment?.patient.sex==='M' "><img
+                                src="./../../../assets/patient-male.png" alt="">
+                        </div>
+                        <div class="show-patient" *ngIf="appointment?.patient.sex==='F' "><img
+                                src="./../../../assets/patient-female.png" alt="">
+                        </div>
+                    </a>
+                    <div class="fullname">{{appointment?.patient.fullName}}</div>
+                </div>
 
-            <div class="patient-info">
-                <a [routerLink]="['/patients',appointment?.patient._id]">
-                    <div class="show-patient" *ngIf="appointment?.patient.sex==='M' "><img
-                            src="./../../../assets/patient-male.png" alt="">
-                    </div>
-                    <div class="show-patient" *ngIf="appointment?.patient.sex==='F' "><img
-                            src="./../../../assets/patient-female.png" alt="">
-                    </div>
-                </a>
-                <div class="fullname">{{appointment?.patient.fullName}}</div>
+                <div class="doctor-info">
+                    <a [routerLink]="['/doctors',appointment?.doctor._id]">
+                        <div class="show-doctor" *ngIf="appointment?.doctor.sex==='M' "><img
+                                src="./../../../assets/doctor-male.png" alt="">
+                        </div>
+                        <div class="show-doctor" *ngIf="appointment?.doctor.sex==='F' "><img
+                                src="./../../../assets/doctor-female.png" alt="">
+                        </div>
+                    </a>
+                    <div class="fullname">{{appointment?.doctor.fullName}}</div>
+                </div>
+                <div class="center">
+                    <button mat-button class="edit-button" (click)="changeToEditMode()">edit</button>
+                </div>
+
+
+                <div class="down-wrapper">
+                    <div class="date">Date: {{appointment?.date | date:'yyyy-MM-dd HH:mm'}}</div>
+                    <div class="specialization">Doctor's specialization: {{appointment?.doctor.specialization}}</div>
+                </div>
             </div>
 
-            <div class="doctor-info">
-                <a [routerLink]="['/doctors',appointment?.doctor._id]">
-                    <div class="show-doctor" *ngIf="appointment?.doctor.sex==='M' "><img
-                            src="./../../../assets/doctor-male.png" alt="">
-                    </div>
-                    <div class="show-doctor" *ngIf="appointment?.doctor.sex==='F' "><img
-                            src="./../../../assets/doctor-female.png" alt="">
-                    </div>
-                </a>
-                <div class="fullname">{{appointment?.doctor.fullName}}</div>
-            </div>
         </div>
 
     </div>
@@ -91,8 +100,7 @@
                     </mat-card>
                     <input type="time" #time class="time" formControlName="time">
                 </div>
-                <button mat-button color="primary" type="submit" [disabled]="myForm.invalid"
-                    [disabled]="success">SUBMIT</button>
+                <button mat-button color="primary" (click)="submit()" [disabled]="myForm.invalid">SUBMIT</button>
             </div>
 
 
