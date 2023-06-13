@@ -1,6 +1,6 @@
 .container {
     //flex: 0 1 800px;
-    width: 800px;
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
@@ -30,6 +30,7 @@
         }
     }
 
+    .patient,
     .doctor,
     .date,
     .specialization {

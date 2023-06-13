@@ -1,9 +1,9 @@
 .container {
-    flex: 0 1 800px;
+    width: 800px;
 
     display: grid;
     // grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: 4fr 2fr 5fr 10fr;
+    grid-template-columns: 1fr 2fr 5fr 10fr;
     gap: 2rem;
     color: rgb(255, 254, 254);
     background: rgba(0, 0, 0, 0.308);
@@ -30,10 +30,13 @@
     gap: 1rem;
 }
 
-.doctor-fullname,
-.patient-fullname,
 .id {
-    width: 9rem; // Możesz dostosować tę wartość według potrzeb
+    width: 1rem;
+}
+
+.doctor-fullname,
+.patient-fullname {
+    width: 9rem;
 }
 
 

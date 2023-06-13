@@ -51,7 +51,7 @@ export class AppointmentProfileComponent implements OnInit {
 
   submit(): void {
     if (this.mode === 'create') this.submitCreate()
-    if (this.mode === 'edit') this.submitEdit()
+    else if (this.mode === 'edit') this.submitEdit()
   }
   submitCreate() {
     this.loading = true
@@ -220,19 +220,20 @@ export class AppointmentProfileComponent implements OnInit {
       }
     }
 
-    this.id = this.route.snapshot.params['id']
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id']
-    })
+
     if (this.mode === 'display' || this.mode === 'edit') {
       this.dataService.getAppointmentById(this.id).subscribe((data) => {
         this.appointment = data.data.appointment as Appointment
-        console.log(this.appointment)
       })
     }
   }
 
   ngOnInit(): void {
+
+    this.id = this.route.snapshot.params['id']
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id']
+    })
 
     this.mode = this.route.snapshot.queryParams['mode']
     this.route.queryParams.subscribe((params: Params) => {
