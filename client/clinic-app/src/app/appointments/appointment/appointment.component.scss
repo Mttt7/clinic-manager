@@ -44,3 +44,25 @@
 img {
     width: 28px;
 }
+
+@media (max-width: 1100px) {
+
+    .container {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .3rem;
+        padding: .5rem;
+
+        .city,
+        .date {
+            display: none;
+        }
+    }
+
+
+
+
+
+}

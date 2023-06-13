@@ -63,3 +63,29 @@
         font-size: 2rem;
     }
 }
+
+@media (max-width: 1100px) {
+
+    .personal-info {
+        flex-direction: column;
+
+        .profile-photo {
+            img {
+                width: 200px;
+            }
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+            font-size: 1rem;
+
+
+
+            padding: 1rem;
+
+        }
+    }
+
+}
