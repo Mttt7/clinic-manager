@@ -1,12 +1,23 @@
 .container {
     height: 100%;
-    background-color: lightcoral;
+    background: rgba(0, 0, 0, 0.308);
+    border-radius: 0px 40px 0px 0px;
     font-family: 'Signika Negative', sans-serif;
 }
 
 ul {
     padding: 1rem;
+    //padding-top: 100%;
     padding-left: 0.2rem;
+
+}
+
+.icon {
+    padding: 20px;
+
+    img {
+        width: 100px;
+    }
 }
 
 a {

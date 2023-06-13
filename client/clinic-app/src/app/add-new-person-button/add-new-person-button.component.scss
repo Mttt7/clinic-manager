@@ -1,13 +1,16 @@
 .container {
-    width: 800px;
-    background-color: antiquewhite;
+
     display: flex;
     align-items: center;
     justify-content: center;
     padding: .5rem;
 
+
     .add {
-        background-color: aqua;
+        color: rgb(255, 254, 254);
+        background: rgba(0, 0, 0, 0.308);
+        border-radius: 10px;
+
         padding: 1rem;
         border-radius: 20px;
         cursor: pointer;
@@ -16,5 +19,9 @@
     .add:hover {
         transform: scale(1.07);
         font-weight: 700;
+    }
+
+    img {
+        width: 30px;
     }
 }

@@ -2,17 +2,22 @@
     display: grid;
     grid-template-columns: 1fr 10fr;
     grid-template-rows: 1fr 14fr;
+    background: rgb(56, 114, 200);
+    background: linear-gradient(118deg, rgba(56, 114, 200, 1) 0%, rgba(80, 223, 164, 1) 46%, rgba(108, 230, 250, 1) 100%);
 }
 
 .header {
-    grid-column: 1/3;
+    grid-column: 2/3;
+    grid-row: 1/2;
 }
 
 .sidebar {
-    grid-row: 2/3;
+    grid-row: 1/3;
+    grid-column: 1/2;
 }
 
 .main {
+    padding-top: 3rem;
     grid-column: 2/3;
     grid-row: 2/3;
 }

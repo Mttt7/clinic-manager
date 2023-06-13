@@ -18,6 +18,7 @@ export class PatientsComponent implements OnInit {
   patientsFullCount: number
   pageNumber: number = +this.route.snapshot.queryParams['page']
   isLoading = true
+  pageMultipler: number = null
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
@@ -43,6 +44,11 @@ export class PatientsComponent implements OnInit {
 
   }
 
+  getIndex(i) {
+    console.log(i)
+    console.log(this.pageNumber)
+    return i + (this.pageMultipler * (this.pageNumber - 1))
+  }
 
 
   updateData() {
@@ -50,8 +56,8 @@ export class PatientsComponent implements OnInit {
       this.patients = data.data.patients as Patient[];
       this.patientsFullCount = data.data.fullCount
       this.patientsCount = data.data.count
-      // console.log(this.patients);
-      // console.log(this.patients[4]._id);
+      if (!this.pageMultipler) this.pageMultipler = this.patientsCount
+
       this.isLoading = false
       this.router.navigate([], { queryParams: { page: this.pageNumber } })
     })

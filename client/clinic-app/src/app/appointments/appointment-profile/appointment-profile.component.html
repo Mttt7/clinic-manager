@@ -39,49 +39,63 @@
 
     <div class="create" *ngIf="mode==='create' || mode==='edit'">
         <form [formGroup]="myForm" [hidden]="success" (ngSubmit)="submit()">
-            <hr>
-            <div class="full-name-input-wrapper">
-                <mat-form-field>
-                    <input matInput placeholder="doctor" formControlName="doctorFullName">
-                </mat-form-field>
-                <div class="reset-btn" *ngIf="doctorChosen" (click)="resetDoctor()">reset</div>
-            </div>
 
-            <div class="doctor-search-results" *ngFor="let doctor of searchedDoctors">
-                <div class="doctor-search-result" (click)="chooseDoctor(doctor)" *ngIf="!doctorChosen">
-                    <div class="full-name">{{doctor?.fullName}}</div>
-                    <div class="specialization">{{doctor?.specialization}}</div>
+
+            <div class="left">
+                <div class="full-name-input-wrapper">
+                    <mat-form-field>
+                        <input matInput placeholder="doctor" formControlName="doctorFullName">
+                    </mat-form-field>
+                    <div class="placeholder-for-reset-button" *ngIf="!doctorChosen"></div>
+                    <button mat-button color="primary" class="reset-btn" (click)="resetDoctor()"
+                        *ngIf="doctorChosen">reset</button>
+                </div>
+
+
+
+                <div class="full-name-input-wrapper">
+                    <mat-form-field>
+                        <input matInput placeholder="patient" formControlName="patientFullName">
+                    </mat-form-field>
+                    <div class="placeholder-for-reset-button" *ngIf="!patientChosen"></div>
+                    <button mat-button color="primary" class="reset-btn" (click)="resetPatient()"
+                        *ngIf="patientChosen">reset</button>
+                </div>
+
+
+                <div class="doctor-search-results">
+                    <div class="wrapper" *ngFor="let doctor of searchedDoctors">
+                        <div class="doctor-search-result" (click)="chooseDoctor(doctor)" *ngIf="!doctorChosen">
+                            <div class="full-name">{{doctor?.fullName}}</div>
+                            <div class="specialization">{{doctor?.specialization}}</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="patient-search-results">
+                    <div class="wrapper" *ngFor="let patient of searchedPatients">
+                        <div class="patient-search-result" (click)="choosePatient(patient)" *ngIf="!patientChosen">
+                            <div class="full-name">{{patient?.fullName}}</div>
+                            <div class="pesel">{{patient?.pesel}}</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="full-name-input-wrapper">
-                <mat-form-field>
-                    <input matInput placeholder="patient" formControlName="patientFullName">
-                </mat-form-field>
-                <div class="reset-btn" *ngIf="patientChosen" (click)="resetPatient()">reset</div>
-            </div>
-
-            <div class="patient-search-results" *ngFor="let patient of searchedPatients">
-                <div class="patient-search-result" (click)="choosePatient(patient)" *ngIf="!patientChosen">
-                    <div class="full-name">{{patient?.fullName}}</div>
-                    <div class="pesel">{{patient?.pesel}}</div>
+            <div class="right">
+                <div class="date-picker">
+                    <mat-card class="calendar-card" (click)="runValidator()">
+                        <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
+                    </mat-card>
+                    <input type="time" #time class="time" formControlName="time">
                 </div>
-            </div>
-
-            <div class="date-picker">
-                <mat-card class="calendar-card" (click)="runValidator()">
-                    <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
-                </mat-card>
-                <input type="time" #time formControlName="time">
+                <button mat-button color="primary" type="submit" [disabled]="myForm.invalid"
+                    [disabled]="success">SUBMIT</button>
             </div>
 
 
-
-
-
-
-
-            <button mat-button color="primary" type="submit" [disabled]="myForm.invalid">SUBMIT</button>
         </form>
         <div class="notification-success" *ngIf="success">
             Appointment added successfully!

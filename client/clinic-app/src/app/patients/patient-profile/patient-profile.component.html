@@ -5,17 +5,25 @@
             <img src="./../../../assets/patient-female.png" *ngIf="patient?.sex==='F'">
 
         </div>
-        <div class="full-name">
-            {{patient?.fullName}}
+        <div class="details">
+            <div class="full-name">
+                {{patient?.fullName}}
+                <div class="edit"><button mat-button class="edit-button" (click)="onEditButtonClicked()">EDIT</button>
+                </div>
+            </div>
+
+            <div class="pesel">PESEL: {{patient?.pesel}}</div>
+            <div class="birthday">Date of birth: {{ patient?.dateOfBirth | date:'yyyy-MM-dd' }}</div>
+
+            <div class="city">City: {{patient?.city}}</div>
+            <div class="address">Address: {{patient?.address}}</div>
         </div>
-        <div class="pesel">{{patient?.pesel}}</div>
-        <div class="birthday">{{patient?.dateOfBirth}}</div>
-        <div class="city">{{patient?.city}}</div>
-        <div class="address">{{patient?.address}}</div>
+
     </div>
-    <div class="edit"><button (click)="onEditButtonClicked()">EDIT</button></div>
+
     <div class="appointments">
-        Appointments:
+
+        <div class="text">Appointments:</div>
         <app-add-appointment-button [patient]="patient"></app-add-appointment-button>
         <app-appointment *ngFor="let appointment of appointments" [appointment]="appointment"
             [fromPatient]="true"></app-appointment>

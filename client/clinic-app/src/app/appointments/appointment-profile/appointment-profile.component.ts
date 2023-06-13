@@ -73,7 +73,7 @@ export class AppointmentProfileComponent implements OnInit {
         (response) => {
           appID = response.data.appointment._id
           this.id = appID;
-          this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
+
           this.success = true
         }, (error) => console.log(error))
 
@@ -182,7 +182,7 @@ export class AppointmentProfileComponent implements OnInit {
   }
 
   showNewAppointment() {
-    this.router.navigate([], { queryParams: { mode: 'display' } })
+    this.router.navigate([`appointments/${this.id}`], { queryParams: { mode: 'display' } })
   }
 
   changeToEditMode() {

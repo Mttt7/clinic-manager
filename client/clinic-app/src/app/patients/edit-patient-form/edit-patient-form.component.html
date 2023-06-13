@@ -7,8 +7,8 @@
 
 
         <mat-radio-group formControlName="sex">
-            <mat-radio-button value="M">M</mat-radio-button>
-            <mat-radio-button value="F">F</mat-radio-button>
+            <mat-radio-button color="primary" value="M">M</mat-radio-button>
+            <mat-radio-button color="primary" value="F">F</mat-radio-button>
         </mat-radio-group>
 
 
@@ -19,7 +19,6 @@
         <mat-form-field>
             <mat-label>Choose a date</mat-label>
             <input matInput formControlName="dateOfBirth" [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

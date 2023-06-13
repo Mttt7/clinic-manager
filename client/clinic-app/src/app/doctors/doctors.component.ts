@@ -15,6 +15,7 @@ export class DoctorsComponent {
   doctorsFullCount: number
   pageNumber: number = +this.route.snapshot.queryParams['page']
   isLoading = true
+  pageMultipler: number = null
 
   constructor(private route: ActivatedRoute,
     private dataService: DataService,
@@ -44,7 +45,11 @@ export class DoctorsComponent {
 
   }
 
-
+  getIndex(i) {
+    console.log(i)
+    console.log(this.pageNumber)
+    return i + (this.pageMultipler * (this.pageNumber - 1))
+  }
 
   updateData() {
     this.dataService.getDoctors(this.pageNumber).subscribe((data) => {
@@ -52,9 +57,7 @@ export class DoctorsComponent {
       this.doctorsFullCount = data.data.fullCount
       this.doctorsCount = data.data.count
       this.isLoading = false
-      // this.pageNumber = +this.route.snapshot.queryParams['page']
-      // console.log()
-      // console.log(this.pageNumber)
+      if (!this.pageMultipler) this.pageMultipler = this.doctorsCount
 
       this.router.navigate([], { queryParams: { page: this.pageNumber } })
     })

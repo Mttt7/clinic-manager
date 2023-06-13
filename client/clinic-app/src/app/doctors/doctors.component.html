@@ -3,13 +3,14 @@
         <mat-spinner></mat-spinner>
     </div>
 
+
     <div class="doctors">
         <app-add-new-person-button [mode]="'doctor'"></app-add-new-person-button>
-        <app-doctor *ngFor="let doctor of doctors, let i = index" [doctor]="doctor" [index]="i"></app-doctor>
+        <app-doctor *ngFor="let doctor of doctors, let i = index" [doctor]="doctor" [index]="getIndex(i)"></app-doctor>
 
     </div>
 
-    <div class="pagination">
+    <div class=" pagination">
         <div class="info">displaying {{doctorsCount}} doctors of {{doctorsFullCount}}</div>
         <div class="buttons">
             <div class="previous" (click)="previousPage()"> <button><- </button> </div>

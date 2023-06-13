@@ -6,7 +6,8 @@
 
     <div class="patients">
         <app-add-new-person-button [mode]="'patient'"></app-add-new-person-button>
-        <app-patient *ngFor="let patient of patients, let i =index" [patient]="patient" [index]="i"></app-patient>
+        <app-patient *ngFor="let patient of patients, let i =index" [patient]="patient"
+            [index]="getIndex(i)"></app-patient>
 
     </div>
 
