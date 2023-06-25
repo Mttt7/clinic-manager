@@ -38,3 +38,22 @@ a:hover {
 
 
 }
+
+@media (max-width: 1100px) {
+
+    .ulHidden {
+        transform: translateY(-130px) scale(0);
+        transition: 0.4s ease;
+    }
+
+
+
+    .navbar-hidden {
+        height: 140px;
+    }
+
+    .container {
+        border-radius: 0px 40px 40px 0px;
+    }
+
+}

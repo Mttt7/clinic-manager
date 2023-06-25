@@ -1,8 +1,8 @@
-<div class="container">
-    <div class="icon">
+<div class="container" [ngClass]="{'navbar-hidden': navbarDisabled}">
+    <div class="icon" (click)="toggleNavbar()">
         <img src="./../../assets/clinic-cross.png" alt="">
     </div>
-    <ul>
+    <ul [ngClass]="{'ulHidden': navbarDisabled}">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/patients']"
                 [queryParams]="{page:1}">Patients</a>
         </li>

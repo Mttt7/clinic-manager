@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  navbarDisabled: boolean = true
+  toggleNavbar() {
+    this.navbarDisabled = !this.navbarDisabled
+  }
 }
