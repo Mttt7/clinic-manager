@@ -31,6 +31,7 @@
             <input matInput placeholder="address" formControlName="address">
         </mat-form-field>
 
+        <button mat-button color="warn" type="delete" (click)="deletePatient()">DELETE</button>
         <button mat-button color="primary" type="submit" [disabled]="myForm.invalid" (click)="submit()">SUBMIT</button>
 
     </form>

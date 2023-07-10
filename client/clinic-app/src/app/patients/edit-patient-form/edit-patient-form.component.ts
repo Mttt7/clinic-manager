@@ -49,10 +49,14 @@ export class EditPatientFormComponent {
 
   }
 
+
   seePatient() {
     this.router.navigate([`patients/${this.id}`])
   }
 
+  deletePatient() {
+
+  }
 
 
   ngOnInit(): void {
