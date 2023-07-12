@@ -10,14 +10,41 @@ class APIFeatures {
         excludeFields.forEach((el) => delete queryObj[el]);
 
         let searchQuery = this.queryString.search;
-        console.log(searchQuery);
 
         if (searchQuery) {
             const searchValue = searchQuery.split('-').join(' ')
-            console.log(searchValue)
             const searchRegExp = new RegExp(`^${searchValue}`, 'i')
 
-            queryObj = { fullName: { $all: searchRegExp } };
+            const searchDate = new Date(searchValue);
+            const firstDayOfYear = new Date(searchDate.getFullYear(), 0, 1);
+            const lastDayOfYear = new Date(searchDate.getFullYear() + 1, 0, 0);
+
+            // Base query that is always used
+            const baseQuery = { fullName: { $regex: searchRegExp } };
+
+            // Add pesel and city to the query if they exist in the model
+            if (this.queryString.pesel) {
+                baseQuery.pesel = { $regex: searchRegExp };
+            }
+            if (this.queryString.city) {
+                baseQuery.city = { $regex: searchRegExp };
+            }
+
+            // Create the final query
+            if (!isNaN(searchDate.getTime())) {
+                // If searchValue is a date, add dateOfBirth to the query
+                queryObj = {
+                    $or: [
+                        baseQuery,
+                        { dateOfBirth: { $gte: firstDayOfYear, $lte: lastDayOfYear } }
+                    ]
+                };
+            } else {
+                // If not, use the base query
+                queryObj = {
+                    $or: [baseQuery]
+                };
+            }
         }
 
         this.query = this.query.find(queryObj)

@@ -4,6 +4,9 @@
         <mat-spinner></mat-spinner>
     </div>
 
+
+    <app-searchbar> </app-searchbar>
+
     <div class="patients">
         <app-add-new-person-button [mode]="'patient'"></app-add-new-person-button>
         <app-patient *ngFor="let patient of patients, let i =index" [patient]="patient"

@@ -43,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NewDoctorFormComponent } from './doctors/new-doctor-form/new-doctor-form.component';
 import { EditDoctorFormComponent } from './doctors/edit-doctor-form/edit-doctor-form.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 
 
@@ -67,7 +68,8 @@ import { EditDoctorFormComponent } from './doctors/edit-doctor-form/edit-doctor-
     NewPatientFormComponent,
     EditPatientFormComponent,
     NewDoctorFormComponent,
-    EditDoctorFormComponent
+    EditDoctorFormComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
