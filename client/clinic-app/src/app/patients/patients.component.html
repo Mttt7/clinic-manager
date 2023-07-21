@@ -5,7 +5,7 @@
     </div>
 
 
-    <app-searchbar> </app-searchbar>
+    <app-searchbar (patientsNarroved)="handlePatientsNarroved($event)"> </app-searchbar>
 
     <div class="patients">
         <app-add-new-person-button [mode]="'patient'"></app-add-new-person-button>

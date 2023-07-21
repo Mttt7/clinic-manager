@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { Patient } from '../models/patient.model';
@@ -9,35 +9,28 @@ import { Patient } from '../models/patient.model';
   styleUrls: ['./searchbar.component.scss']
 })
 export class SearchbarComponent implements OnInit {
+
   myForm: FormGroup;
 
-  searchedPatients: Patient[] = []
 
+  @Output() patientsNarroved = new EventEmitter<string>();
 
-  constructor(private fb: FormBuilder,
-    private dataService: DataService) { }
+  constructor(private fb: FormBuilder) { }
 
-
-
-  searchPatient() {
-    if (this.myForm.value.patientFullName?.length > 1) {
-      this.dataService.searchForPatient(this.myForm.value.patientFullName).subscribe((data) => {
-        this.searchedPatients = data.data.patients
-      })
-    }
-    else {
-      this.searchedPatients = []
-    }
+  emitSearchString() {
+    console.log(this.myForm.value.search)
+    this.patientsNarroved.emit(this.myForm.value.search)
   }
-
-
 
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
       search: ['']
     });
+    this.myForm.valueChanges.subscribe(() => this.emitSearchString())
   }
+
+
 
 
 

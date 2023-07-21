@@ -5,6 +5,12 @@ const APIFeatures = require('./../utils/APIFeatures')
 exports.getAllPatients = async (req, res) => {
     try {
         //---execute query---
+        const featuresForCount = new APIFeatures(Patient.find(), req.query)
+            .filter()
+            .sort()
+            .limitFields();
+        const searchCount = await featuresForCount.query.countDocuments();
+
         const features = new APIFeatures(Patient.find(), req.query)
             .filter()
             .sort()
@@ -12,11 +18,15 @@ exports.getAllPatients = async (req, res) => {
             .paginate()
 
         const patients = await features.query
+        //const count = await features.count();
         const fullCount = await Patient.countDocuments()
+
+
         res.status(200).json({
             status: 'success',
             data: {
                 count: patients.length,
+                searchCount,
                 fullCount,
                 patients
             }

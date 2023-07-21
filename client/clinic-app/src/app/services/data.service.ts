@@ -30,9 +30,10 @@ export class DataService {
     return this.http.get<Patient>(`http://localhost:7000/api/v1/patients/${id}`)
   }
 
-  searchForPatient(fullName: string): Observable<any> {
-    fullName = fullName.split(' ').join('-')
-    return this.http.get<any>(`http://localhost:7000/api/v1/patients?search=${fullName}`)
+  searchForPatient(searchQuery: string, page?: number): Observable<any> {
+    searchQuery = searchQuery.split(' ').join('-')
+    console.log(searchQuery)
+    return this.http.get<any>(`http://localhost:7000/api/v1/patients?search=${searchQuery}&page=${page}`)
   }
   createNewPatient(patient: Patient): Observable<any> {
     return this.http.post<any>(`http://localhost:7000/api/v1/patients`, JSON.stringify(patient), this.httpOptions)
@@ -52,9 +53,9 @@ export class DataService {
   getDoctorAppointment(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors/${id}/appointments`)
   }
-  searchForDoctor(fullName: string): Observable<any> {
-    fullName = fullName.split(' ').join('-')
-    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${fullName}`)
+  searchForDoctor(searchQuery: string): Observable<any> {
+    searchQuery = searchQuery.split(' ').join('-')
+    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${searchQuery}`)
   }
   createNewDoctor(doctor: Doctor): Observable<any> {
     return this.http.post<any>(`http://localhost:7000/api/v1/doctors`, JSON.stringify(doctor), this.httpOptions)
