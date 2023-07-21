@@ -53,9 +53,9 @@ export class DataService {
   getDoctorAppointment(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:7000/api/v1/doctors/${id}/appointments`)
   }
-  searchForDoctor(searchQuery: string): Observable<any> {
+  searchForDoctor(searchQuery: string, page?: number): Observable<any> {
     searchQuery = searchQuery.split(' ').join('-')
-    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${searchQuery}`)
+    return this.http.get<any>(`http://localhost:7000/api/v1/doctors?search=${searchQuery}&page=${page}`)
   }
   createNewDoctor(doctor: Doctor): Observable<any> {
     return this.http.post<any>(`http://localhost:7000/api/v1/doctors`, JSON.stringify(doctor), this.httpOptions)

@@ -4,11 +4,12 @@ const APIFeatures = require('./../utils/APIFeatures')
 
 exports.getAllPatients = async (req, res) => {
     try {
-        //---execute query---
+
         const featuresForCount = new APIFeatures(Patient.find(), req.query)
             .filter()
             .sort()
             .limitFields();
+
         const searchCount = await featuresForCount.query.countDocuments();
 
         const features = new APIFeatures(Patient.find(), req.query)

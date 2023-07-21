@@ -16,6 +16,7 @@ export class DoctorsComponent {
   pageNumber: number = +this.route.snapshot.queryParams['page']
   isLoading = true
   pageMultipler: number = null
+  searchString = ''
 
   constructor(private route: ActivatedRoute,
     private dataService: DataService,
@@ -28,7 +29,7 @@ export class DoctorsComponent {
       this.pageNumber++
       this.doctors = []
       this.isLoading = true
-      this.updateData()
+      this.updateData(this.searchString)
 
     }
 
@@ -39,10 +40,15 @@ export class DoctorsComponent {
       this.pageNumber--
       this.doctors = []
       this.isLoading = true
-      this.updateData()
+      this.updateData(this.searchString)
 
     }
 
+  }
+
+  handleDoctorsNarroved(searchString: string) {
+    this.updateData(searchString)
+    this.searchString = searchString
   }
 
   getIndex(i) {
@@ -51,16 +57,30 @@ export class DoctorsComponent {
     return i + (this.pageMultipler * (this.pageNumber - 1))
   }
 
-  updateData() {
-    this.dataService.getDoctors(this.pageNumber).subscribe((data) => {
-      this.doctors = data.data.doctors as Doctor[];
-      this.doctorsFullCount = data.data.fullCount
-      this.doctorsCount = data.data.count
-      this.isLoading = false
-      if (!this.pageMultipler) this.pageMultipler = this.doctorsCount
+  updateData(searchString?: string) {
+    if (!searchString) {
+      this.dataService.getDoctors(this.pageNumber).subscribe((data) => {
+        this.doctors = data.data.doctors as Doctor[];
+        this.doctorsFullCount = data.data.fullCount
+        this.doctorsCount = data.data.count
+        this.isLoading = false
+        if (!this.pageMultipler) this.pageMultipler = this.doctorsCount
 
-      this.router.navigate([], { queryParams: { page: this.pageNumber } })
-    })
+        this.router.navigate([], { queryParams: { page: this.pageNumber } })
+      })
+    }
+    else {
+      this.dataService.searchForDoctor(searchString, this.pageNumber).subscribe((data) => {
+        this.doctors = data.data.doctors as Doctor[];
+        this.doctorsFullCount = data.data.searchCount
+        this.doctorsCount = data.data.count
+        if (!this.pageMultipler) this.pageMultipler = this.doctorsCount
+
+        this.isLoading = false
+        this.router.navigate([], { queryParams: { page: this.pageNumber } })
+      })
+    }
+
 
 
   }

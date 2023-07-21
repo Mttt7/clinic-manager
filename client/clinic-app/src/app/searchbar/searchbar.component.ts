@@ -13,13 +13,13 @@ export class SearchbarComponent implements OnInit {
   myForm: FormGroup;
 
 
-  @Output() patientsNarroved = new EventEmitter<string>();
+  @Output() resultsNarroved = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) { }
 
   emitSearchString() {
     console.log(this.myForm.value.search)
-    this.patientsNarroved.emit(this.myForm.value.search)
+    this.resultsNarroved.emit(this.myForm.value.search)
   }
 
 

@@ -4,11 +4,22 @@ const Appointment = require('../models/appointmentModel')
 
 exports.getAllDoctors = async (req, res) => {
     try {
+
+        const featuresForCount = new APIFeatures(Doctor.find(), req.query)
+            .filter()
+            .sort()
+            .limitFields();
+        const searchCount = await featuresForCount.query.countDocuments();
+
+
+
         const features = new APIFeatures(Doctor.find(), req.query)
             .filter()
             .sort()
             .limitFields()
             .paginate()
+
+
 
         const doctors = await features.query
         const fullCount = await Doctor.countDocuments()
@@ -17,6 +28,7 @@ exports.getAllDoctors = async (req, res) => {
             status: 'success',
             data: {
                 count: doctors.length,
+                searchCount,
                 fullCount,
                 doctors
             }
