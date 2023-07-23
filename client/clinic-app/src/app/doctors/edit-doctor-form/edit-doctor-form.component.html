@@ -25,6 +25,7 @@
             <input matInput placeholder="specialization" formControlName="specialization">
         </mat-form-field>
 
+        <button mat-button color="warn" type="delete" (click)="deleteDoctor()">DELETE</button>
         <button mat-button color="primary" type="submit" [disabled]="myForm.invalid" (click)="submit()">SUBMIT</button>
 
     </form>
