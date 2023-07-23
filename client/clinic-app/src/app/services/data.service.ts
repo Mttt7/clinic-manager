@@ -41,6 +41,9 @@ export class DataService {
   editPatient(id: string, patient: Patient): Observable<any> {
     return this.http.patch<any>(`http://localhost:7000/api/v1/patients/${id}`, JSON.stringify(patient), this.httpOptions)
   }
+  deletePatient(id: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:7000/api/v1/patients/${id}`)
+  }
 
   //Doctors
   getDoctors(pageNumber: number): Observable<any> {
@@ -85,6 +88,9 @@ export class DataService {
     return this.http.patch<any>(`http://localhost:7000/api/v1/appointments/${id}`, JSON.stringify(appointment), this.httpOptions)
   }
 
+  deleteAppointment(id: string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:7000/api/v1/appointments/${id}`)
+  }
 
 
 }

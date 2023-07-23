@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient.model';
 import { DataService } from 'src/app/services/data.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent, ConfirmDialogModel } from 'src/app/confirm-dialog/confirm-dialog.component';
 @Component({
   selector: 'app-edit-patient-form',
   templateUrl: './edit-patient-form.component.html',
@@ -15,7 +17,8 @@ export class EditPatientFormComponent {
   constructor(private fb: FormBuilder,
     private dataService: DataService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
 
   myForm: FormGroup
@@ -55,7 +58,31 @@ export class EditPatientFormComponent {
   }
 
   deletePatient() {
+    const dialogData: ConfirmDialogModel = {
+      title: "Confirm Deletion",
+      message: "Are you sure you want to delete this patient?"
+    };
 
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        // If user clicked yes, proceed with deletion
+        this.dataService.getPatientById(this.id).subscribe((data) => {
+          console.log("deleting patient", data.data.patient.fullName + "...")
+        })
+        this.dataService.getPatientAppointment(this.id).subscribe((data) => {
+          const appointments = data.data.appointments;
+          appointments.forEach((appointmentID) => {
+            this.dataService.deleteAppointment(appointmentID).subscribe((data) => { });
+          });
+        });
+        this.dataService.deletePatient(this.id).subscribe((data) => { });
+      }
+    });
   }
 
 

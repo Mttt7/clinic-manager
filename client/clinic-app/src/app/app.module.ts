@@ -24,6 +24,7 @@ import { DoctorProfileComponent } from './doctors/doctor-profile/doctor-profile.
 import { DoctorComponent } from './doctors/doctor/doctor.component';
 import { AppointmentFromAppointmentsComponent } from './appointments/appointment-from-appointments/appointment-from-appointments.component';
 import { AddAppointmentButtonComponent } from './appointments/add-appointment-button/add-appointment-button.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModuleConfig } from '@angular/platform-browser/animations';
@@ -44,6 +45,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NewDoctorFormComponent } from './doctors/new-doctor-form/new-doctor-form.component';
 import { EditDoctorFormComponent } from './doctors/edit-doctor-form/edit-doctor-form.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -69,7 +71,8 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     EditPatientFormComponent,
     NewDoctorFormComponent,
     EditDoctorFormComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     MatCardModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
