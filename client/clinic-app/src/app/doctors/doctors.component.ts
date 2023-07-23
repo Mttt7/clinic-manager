@@ -52,8 +52,6 @@ export class DoctorsComponent {
   }
 
   getIndex(i) {
-    console.log(i)
-    console.log(this.pageNumber)
     return i + (this.pageMultipler * (this.pageNumber - 1))
   }
 

@@ -46,7 +46,6 @@ export class PatientsComponent implements OnInit {
   }
 
   getIndex(i) {
-
     return i + (this.pageMultipler * (this.pageNumber - 1))
   }
 

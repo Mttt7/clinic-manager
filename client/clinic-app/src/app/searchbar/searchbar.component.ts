@@ -18,7 +18,6 @@ export class SearchbarComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   emitSearchString() {
-    console.log(this.myForm.value.search)
     this.resultsNarroved.emit(this.myForm.value.search)
   }
 
