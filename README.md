@@ -1,5 +1,5 @@
 # CLINIC MANAGER
-Clinic Management System build using MEAN stack (MongoDB, ExpressJS, Angular, Next.js).
+Clinic Management System build using MEAN stack (MongoDB, ExpressJS, Angular, NodeJS).
 
 # Demo:
 https://github.com/Mttt7/clinic-manager/assets/102900827/a529a659-2603-40aa-86c9-0b6d7187a23a
